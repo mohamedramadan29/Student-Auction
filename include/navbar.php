@@ -15,7 +15,7 @@
                             <a href="index"> المنتجات </a> <!-- index -->
                         </li>
                         <li>
-                            <a href="shop"> معرفة الرصيد </a> <!-- shop  -->
+                            <a href="balance"> معرفة الرصيد </a> <!-- shop  -->
                         </li>
                         <li>
                             <a href="shop"> المزاد </a> <!-- shop  -->

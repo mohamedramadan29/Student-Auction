@@ -151,7 +151,7 @@ body {
 
 /*---------------------------------------------*/
 .left-top-bar {
-font-family: 'Cairo', sans-serif;
+  font-family: 'Cairo', sans-serif;
   font-size: 12px;
   line-height: 1.8;
   color: #b2b2b2;
@@ -160,7 +160,7 @@ font-family: 'Cairo', sans-serif;
 
 /*---------------------------------------------*/
 .right-top-bar a {
-font-family: 'Cairo', sans-serif;
+  font-family: 'Cairo', sans-serif;
   font-size: 12px;
   line-height: 1.8;
 
@@ -242,7 +242,7 @@ font-family: 'Cairo', sans-serif;
   height: 65%;
   margin-right: 55px;
 }
- 
+
 
 
 
@@ -890,7 +890,7 @@ font-family: 'Cairo', sans-serif;
 
 .header-cart-item-name {
   display: block;
-font-family: 'Cairo', sans-serif;
+  font-family: 'Cairo', sans-serif;
   font-size: 14px;
   color: #555;
   line-height: 1.3;
@@ -898,7 +898,7 @@ font-family: 'Cairo', sans-serif;
 
 .header-cart-item-info {
   display: block;
-font-family: 'Cairo', sans-serif;
+  font-family: 'Cairo', sans-serif;
   font-size: 14px;
   color: #888;
   line-height: 1.5;
@@ -1020,7 +1020,7 @@ font-family: 'Cairo', sans-serif;
 }
 
 .rs1-select2 .select2-results__options {
-font-family: 'Cairo', sans-serif;
+  font-family: 'Cairo', sans-serif;
   font-size: 13px;
   color: #555;
   line-height: 1.2;
@@ -1521,7 +1521,7 @@ button.mfp-close {
 }
 
 .swal-title {
-font-family: 'Cairo', sans-serif;
+  font-family: 'Cairo', sans-serif;
   ;
   color: #333333;
   font-size: 18px;
@@ -1530,7 +1530,7 @@ font-family: 'Cairo', sans-serif;
 }
 
 .swal-text {
- font-family: 'Cairo', sans-serif;
+  font-family: 'Cairo', sans-serif;
   color: #555555;
   font-size: 16px;
   line-height: 1.666667;
@@ -1824,7 +1824,7 @@ input.num-product::-webkit-inner-spin-button {
 }
 
 .table-shopping-cart .table_head th {
-  font-family: 'Cairo', sans-serif; 
+  font-family: 'Cairo', sans-serif;
   font-size: 13px;
   color: #555;
   text-transform: uppercase;
@@ -2044,106 +2044,106 @@ input.num-product::-webkit-inner-spin-button {
 /*//////////////////////////////////////////////////////////////////
 [ S-Text 0 - 15 ]*/
 .stext-101 {
-font-family: 'Cairo', sans-serif; 
+  font-family: 'Cairo', sans-serif;
   font-size: 15px;
   line-height: 1.466667;
   text-transform: uppercase;
 }
 
 .stext-102 {
-font-family: 'Cairo', sans-serif;
+  font-family: 'Cairo', sans-serif;
   font-size: 14px;
   line-height: 1.7;
 }
 
 .stext-103 {
-font-family: 'Cairo', sans-serif;
+  font-family: 'Cairo', sans-serif;
   font-size: 15px;
   line-height: 1.466667;
 }
 
 .stext-104 {
-font-family: 'Cairo', sans-serif;
+  font-family: 'Cairo', sans-serif;
   font-size: 14px;
   line-height: 1.466667;
 }
 
 .stext-105 {
-font-family: 'Cairo', sans-serif;
+  font-family: 'Cairo', sans-serif;
   font-size: 14px;
   line-height: 1.466667;
   letter-spacing: 1px;
 }
 
 .stext-106 {
-font-family: 'Cairo', sans-serif;
+  font-family: 'Cairo', sans-serif;
   font-size: 15px;
   line-height: 1.2;
 }
 
 .stext-107 {
-font-family: 'Cairo', sans-serif;
+  font-family: 'Cairo', sans-serif;
   font-size: 13px;
   line-height: 1.923;
 }
 
 .stext-108 {
-font-family: 'Cairo', sans-serif;
+  font-family: 'Cairo', sans-serif;
   font-size: 14px;
   line-height: 1.7143;
 }
 
 .stext-109 {
-font-family: 'Cairo', sans-serif;
+  font-family: 'Cairo', sans-serif;
   font-size: 12px;
   line-height: 1.833333;
 }
 
 .stext-110 {
-font-family: 'Cairo', sans-serif; 
+  font-family: 'Cairo', sans-serif;
   font-size: 15px;
   line-height: 1.466667;
 }
 
 .stext-111 {
-font-family: 'Cairo', sans-serif;
+  font-family: 'Cairo', sans-serif;
   font-size: 13px;
   line-height: 1.6923;
 }
 
 .stext-112 {
-font-family: 'Cairo', sans-serif;
+  font-family: 'Cairo', sans-serif;
   font-size: 13px;
   line-height: 1.6923;
   text-transform: uppercase;
 }
 
 .stext-113 {
-font-family: 'Cairo', sans-serif;
+  font-family: 'Cairo', sans-serif;
   font-size: 14px;
   line-height: 1.7857;
 }
 
 .stext-114 {
-font-family: 'Cairo', sans-serif;
+  font-family: 'Cairo', sans-serif;
   font-size: 15px;
   line-height: 1.666667;
 }
 
 .stext-115 {
-font-family: 'Cairo', sans-serif;
+  font-family: 'Cairo', sans-serif;
   font-size: 15px;
   line-height: 1.666667;
 }
 
 .stext-116 {
-font-family: 'Cairo', sans-serif;
+  font-family: 'Cairo', sans-serif;
   font-size: 15px;
   line-height: 1.266667;
 }
 
 .stext-117 {
-font-family: 'Cairo', sans-serif;
+  font-family: 'Cairo', sans-serif;
   font-size: 15px;
   line-height: 1.666667;
 }
@@ -2151,7 +2151,7 @@ font-family: 'Cairo', sans-serif;
 
 /*---------------------------------------------*/
 .stext-301 {
-font-family: 'Cairo', sans-serif;
+  font-family: 'Cairo', sans-serif;
   font-size: 15px;
   line-height: 1.6;
   text-transform: uppercase;
@@ -2161,20 +2161,20 @@ font-family: 'Cairo', sans-serif;
 /*//////////////////////////////////////////////////////////////////
 [ M-Text 16 - 25 ]*/
 .mtext-101 {
-font-family: 'Cairo', sans-serif;
+  font-family: 'Cairo', sans-serif;
   ;
   font-size: 18px;
   line-height: 1.333333;
 }
 
 .mtext-102 {
-font-family: 'Cairo', sans-serif;
+  font-family: 'Cairo', sans-serif;
   font-size: 16px;
   line-height: 1.6;
 }
 
 .mtext-103 {
-font-family: 'Cairo', sans-serif;
+  font-family: 'Cairo', sans-serif;
   ;
   font-size: 18px;
   line-height: 1.333333;
@@ -2182,38 +2182,38 @@ font-family: 'Cairo', sans-serif;
 }
 
 .mtext-104 {
-font-family: 'Cairo', sans-serif;
+  font-family: 'Cairo', sans-serif;
   ;
   font-size: 16px;
   line-height: 1.6;
 }
 
 .mtext-105 {
-font-family: 'Cairo', sans-serif;
+  font-family: 'Cairo', sans-serif;
   font-size: 24px;
   line-height: 1.5;
 }
 
 .mtext-106 {
-font-family: 'Cairo', sans-serif;
+  font-family: 'Cairo', sans-serif;
   font-size: 18px;
   line-height: 1.388888;
 }
 
 .mtext-107 {
-font-family: 'Cairo', sans-serif;
+  font-family: 'Cairo', sans-serif;
   font-size: 16px;
   line-height: 1.625;
 }
 
 .mtext-108 {
-font-family: 'Cairo', sans-serif;
+  font-family: 'Cairo', sans-serif;
   font-size: 20px;
   line-height: 1.3;
 }
 
 .mtext-109 {
-font-family: 'Cairo', sans-serif;
+  font-family: 'Cairo', sans-serif;
   ;
   font-size: 20px;
   line-height: 1.3;
@@ -2221,7 +2221,7 @@ font-family: 'Cairo', sans-serif;
 }
 
 .mtext-110 {
-font-family: 'Cairo', sans-serif;
+  font-family: 'Cairo', sans-serif;
   font-size: 18px;
   line-height: 1.222222;
 }
@@ -2255,51 +2255,51 @@ font-family: 'Cairo', sans-serif;
 }
 
 .ltext-102 {
-font-family: 'Cairo', sans-serif; 
+  font-family: 'Cairo', sans-serif;
   font-size: 28px;
   line-height: 1.1;
 }
 
 .ltext-103 {
-font-family: 'Cairo', sans-serif; 
+  font-family: 'Cairo', sans-serif;
   font-size: 36px;
   line-height: 1.1;
   text-transform: uppercase;
 }
 
 .ltext-104 {
-font-family: 'Cairo', sans-serif; 
+  font-family: 'Cairo', sans-serif;
   font-size: 60px;
   line-height: 1.1;
   text-transform: uppercase;
 }
 
 .ltext-105 {
-font-family: 'Cairo', sans-serif;
+  font-family: 'Cairo', sans-serif;
   font-size: 50px;
   line-height: 1.1;
 }
 
 .ltext-106 {
-font-family: 'Cairo', sans-serif;
+  font-family: 'Cairo', sans-serif;
   font-size: 36px;
   line-height: 1.2;
 }
 
 .ltext-107 {
-font-family: 'Cairo', sans-serif;
+  font-family: 'Cairo', sans-serif;
   font-size: 30px;
   line-height: 1.1;
 }
 
 .ltext-108 {
-font-family: 'Cairo', sans-serif;
+  font-family: 'Cairo', sans-serif;
   font-size: 26px;
   line-height: 1.3846;
 }
 
 .ltext-109 {
-font-family: 'Cairo', sans-serif;
+  font-family: 'Cairo', sans-serif;
   font-size: 36px;
   line-height: 1.2;
 }
@@ -2307,7 +2307,7 @@ font-family: 'Cairo', sans-serif;
 
 /*---------------------------------------------*/
 .ltext-201 {
-font-family: 'Cairo', sans-serif;
+  font-family: 'Cairo', sans-serif;
   font-size: 60px;
   line-height: 1.1;
   text-transform: uppercase;
@@ -3769,21 +3769,78 @@ font-family: 'Cairo', sans-serif;
 footer .stext-107 {
   font-size: 16px;
 }
-.block2{
+
+.block2 {
   background-color: #fff;
   box-shadow: 0px 0px 10px 2px #e5e5e5;
   border-radius: 10px;
 }
-.block2 .block2-txt{
+
+.block2 .block2-txt {
   padding: 15px;
 }
-.block2 .block2-txt a{
+
+.block2 .block2-txt a {
   color: #424141;
-    text-decoration: none;
-    font-size: 16px;
-    font-weight: 600;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 600;
 }
-.block2 .block2-txt span{
+
+.block2 .block2-txt span {
   font-weight: bold;
   color: var(--main_color);
 }
+
+/******** START BALANCE PAGE ******/
+
+.balance_account {
+  padding: 40px;
+}
+
+.balance_account .data {
+  background-color: #fff;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px 2px #efe9e9;
+  max-width: 60%;
+  margin: auto;
+}
+
+.balance_account .data h2 {
+
+  font-weight: bold;
+  font-size: 25px;
+  color: var(--main_color);
+  padding-bottom: 30px;
+  text-align: center;
+  margin: auto;
+}
+
+.balance_account .data .box {}
+
+.balance_account .data .box label {
+  margin-bottom: 11px;
+  color: #343333;
+  font-size: 17px;
+}
+
+.balance_account .data .box input {
+  outline: none;
+  box-shadow: none;
+  height: 45px;
+  text-align: right;
+  direction: rtl;
+  margin-bottom: 20px;
+}
+
+.balance_account .data .box button {
+  background-color: var(--main_color);
+  border-color: var(--main_color);
+}
+.balance_account .error_message{
+  text-align: center;
+  margin-top: 15px;
+}
+
+/************ END BALANCE PAGE **********/
