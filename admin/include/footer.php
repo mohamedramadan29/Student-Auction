@@ -79,78 +79,59 @@
      });
    });
  </script>
- <!-- To Add More Attribute To Product -->
+
 
  <script>
-   var uniqueId;
-   jQuery(function($) {
-     $(document).on('change', '.pro-attribute', function() {
-       var pro_attribute = $(this).val();
-       console.log(pro_attribute);
-       var uniqueId = $(this).data('new'); // استخدام الـ data-uniqueId للوصول إلى القيمة الفريدة
-       if (pro_attribute != '') {
-         $.ajax({
-           url: "products/get_variation.php",
-           method: "POST",
-           data: {
-             pro_attribute: pro_attribute
-           },
-           success: function(data) {
-             $('.pro-variation[data-uniqueId="' + uniqueId + '"]').html(data); // استخدام الـ uniqueId لتحديد العنصر المستهدف بشكل فريد
-           }
-         });
-       } else {
-         $('.pro-variation[data-uniqueId="' + uniqueId + '"]').html('<option value="">-- اختر --</option>'); // استخدام الـ uniqueId لتحديد العنصر المستهدف بشكل فريد
-       }
+   $(document).ready(function() {
+     // Listen for changes in the balance input fields
+     $('.balance-input').on('change', function() {
+       var studentId = $(this).data('student-id');
+       var newBalance = $(this).val();
+
+       // Send an AJAX request to update the database
+       $.ajax({
+         url: 'students/update_balance.php',
+         method: 'POST',
+         data: {
+           student_id: studentId,
+           balance_change: newBalance
+         },
+         success: function(response) {
+           // Handle the response (e.g., display a success message)
+           console.log('Balance updated successfully');
+           // Fetch the new balance from the server using another AJAX request
+           // Fetch the new balance from the server using another AJAX request
+           // Fetch the new balance from the server using another AJAX request
+           $.ajax({
+             url: 'students/get_new_balance.php', // Create a new PHP file to fetch the new balances
+             method: 'GET', // You can use GET or POST based on your setup
+             data: {
+               student_id: studentId // Include any necessary data to identify the student
+             },
+             success: function(newBalances) {
+               // Parse the JSON response containing new balances
+               var balances = JSON.parse(newBalances);
+
+               // Iterate through the balances and update corresponding elements
+               for (var studentId in balances) {
+                 var newBalance = balances[studentId];
+                 // Update the element with the matching data-id attribute
+                 $('[data-id="' + studentId + '"]').val(newBalance);
+               }
+             },
+             error: function() {
+               console.error('Error fetching new balances');
+             }
+           });
+         },
+         error: function() {
+           // Handle errors (e.g., display an error message)
+           console.error('Error updating balance');
+         }
+       });
      });
    });
  </script>
- <!-- To Add Images To Gallary -->
- <script>
-   // استهداف زر "اضافة الى المعرض"
-   let addToGalleryBtn = document.getElementById('add_to_gallary');
-
-   addToGalleryBtn.addEventListener('click', function() {
-     // إنشاء العنصر الجديد
-     let newGalleryItem = document.createElement('div');
-     newGalleryItem.classList.add('form-group');
-
-     // إضافة الأكواد التي تحتوي على إضافة الصورة وتفاصيلها داخل العنصر الجديد
-     newGalleryItem.innerHTML = `
-    <div class="form-group">
-      <label for="customFile"> اضافة صورة </label>
-      <div class="custom-file">
-        <input type="file" class="dropify form-control" multiple data-height="150" data-allowed-file-extensions="jpg jpeg png svg" data-max-file-size="4M" name="more_images[]" data-show-loader="true" />
-      </div>
-      <div class="image_gallary_details">
-        <br>
-        <input type="text" class="form-control" name="image_name_gallary[]" placeholder="اسم الصورة">
-        <br>
-        <input type="text" class="form-control" name="image_alt_gallary[]" placeholder="الاسم البديل">
-        <br>
-        <input type="text" class="form-control" name="image_desc_gallary[]" placeholder="وصف مختصر ">
-      </div>
-      <br>
-      <button class="btn btn-sm btn-danger delete_gallery_item"> حذف الصورة <i class='fa fa-trash'></i>  </button>
-    </div>
-  `;
-
-     // إضافة العنصر الجديد إلى الصفحة
-     let imageGallery = document.querySelector('.image_gallary');
-     imageGallery.appendChild(newGalleryItem);
-
-     // استهداف زر "حذف" داخل العنصر الجديد
-     let deleteBtn = newGalleryItem.querySelector('.delete_gallery_item');
-
-     // إضافة حدث النقر على زر "حذف" لحذف العنصر الجديد
-     deleteBtn.addEventListener('click', function() {
-       newGalleryItem.remove();
-     });
-   });
- </script>
-
-
-
  </body>
 
  </html>

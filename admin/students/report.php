@@ -19,7 +19,24 @@
     <!-- /.container-fluid -->
 </section>
 <!-- /.content-header -->
+<?php
+if (isset($_POST['add_balance'])) {
+    if (!empty($_POST['balance_change'])) {
+        $students_id = implode(",", $_POST["student_id"]);
+        $balancechanges = implode(",", $_POST["balance_change"]);
+        echo $students_id;
+    }
+    /*
+    $student_id = $_POST['student_id'];
+    $balance = $_POST['balance_change'];
+    echo $balance;
+    echo "</br>";
+    echo $student_id;
+    //$stmt = $connect->prepare("UPDATE students SET balance = ? WHERE id = ?");
+    //$stmt->execute(array($balance, $student_id));*/
+}
 
+?>
 
 <!-- DOM/Jquery table start -->
 <section class="content">
@@ -67,6 +84,7 @@
                     ?>
 
                     <div class="card-body">
+
                         <div class="table-responsive">
                             <table id="my_table" class="table table-striped table-bordered">
                                 <thead>
@@ -93,10 +111,12 @@
                                     ?>
                                         <tr>
                                             <td> <?php echo $i; ?> </td>
-                                            <td> <?php echo  $student['name']; ?> </td>
-                                            <td> <?php echo  $student['stage']; ?> </td>
-                                            <td> <?php echo  $student['card_number']; ?> </td>
-                                            <td> <?php echo  $student['balance']; ?> </td>
+                                            <td> <?php echo $student['name']; ?> </td>
+                                            <td> <?php echo $student['stage']; ?> </td>
+                                            <td> <?php echo $student['card_number']; ?> </td>
+                                            <td>
+                                                <input type="text" disabled class="form-control new_balance_element" data-id="<?php echo $student['id']; ?>" value="<?php echo $student['balance']; ?>">
+                                            </td>
                                             <td> <?php
                                                     if ($student['status'] == 1) {
                                                     ?>
@@ -109,8 +129,11 @@
                                                     } ?>
                                             </td>
                                             <td> <a href="#" class="btn btn-primary btn-sm"> منتجات الطالب </a> </td>
-                                            <td> <input type="number" class="form-control" value="balance_change" placeholder="ادخال رصيد"> </td>
+                                            <td>
+                                                <input name="student_id" type="hidden" value="<?php echo $student['id']; ?>">
+                                                <input type="number" class="form-control balance-input" data-student-id="<?php echo $student['id']; ?>" placeholder="ادخال رصيد">
 
+                                            </td>
                                             <td>
                                                 <button type="button" class="btn btn-success btn-sm waves-effect" data-toggle="modal" data-target="#edit-Modal_<?php echo $student['id']; ?>"> <i class='fa fa-pen'></i> </button>
                                                 <a href="main.php?dir=students&page=delete&cat_id=<?php echo $student['id']; ?>" class="confirm btn btn-danger btn-sm"> <i class='fa fa-trash'></i> </a>
