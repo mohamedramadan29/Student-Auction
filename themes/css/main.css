@@ -1,5 +1,6 @@
 body {
   font-family: 'Cairo', sans-serif;
+  background-color: #f9f9f9;
 }
 
 * {
@@ -2552,7 +2553,7 @@ font-family: 'Cairo', sans-serif;
 }
 
 .bg0 {
-  background-color: #fff;
+  background-color: #f9f9f9;
 }
 
 .bg1 {
@@ -3767,4 +3768,22 @@ font-family: 'Cairo', sans-serif;
 
 footer .stext-107 {
   font-size: 16px;
+}
+.block2{
+  background-color: #fff;
+  box-shadow: 0px 0px 10px 2px #e5e5e5;
+  border-radius: 10px;
+}
+.block2 .block2-txt{
+  padding: 15px;
+}
+.block2 .block2-txt a{
+  color: #424141;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 600;
+}
+.block2 .block2-txt span{
+  font-weight: bold;
+  color: var(--main_color);
 }
