@@ -76,6 +76,7 @@
                                         <th> يبدا من </th>
                                         <th> رقم المزايدة </th>
                                         <th> صورة المنتج </th>
+                                        <th> مزايدة </th>
                                         <th> </th>
                                     </tr>
                                 </thead>
@@ -94,6 +95,13 @@
                                             <td> <?php echo $product['price_start_from']; ?> </td>
                                             <td> <?php echo $product['step_price']; ?> </td>
                                             <td> <img width="80px" src="products/images/<?php echo $product['image']; ?>" alt=""> </td>
+                                            <td>
+                                                <form action="main?dir=auction_page&page=report" method="post">
+                                                    <input type="hidden" name="product_id" value="<?php echo $product['id'] ?>">
+                                                    <button type="submit" class="btn btn-warning btn-sm"> زايد <i class="fa fa-eye"></i> </button>
+                                                </form>
+
+                                            </td>
                                             <td>
                                                 <button type="button" class="btn btn-success btn-sm waves-effect" data-toggle="modal" data-target="#edit-Modal_<?php echo $product['id']; ?>"> <i class='fa fa-pen'></i> </button>
                                                 <a href="main.php?dir=products&page=delete&cat_id=<?php echo $product['id']; ?>" class="confirm btn btn-danger btn-sm"> <i class='fa fa-trash'></i> </a>

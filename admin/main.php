@@ -46,7 +46,16 @@ if (isset($_SESSION['admin_username'])) {
     } elseif ($dir == 'products' && $page == 'report') {
         include "products/report.php";
     }
-
+    // START auction_page صفحة المزاد 
+    if ($dir == 'auction_page' && $page == 'add') {
+        include "auction_page/add.php";
+    } elseif ($dir == 'auction_page' && $page == 'edit') {
+        include "auction_page/edit.php";
+    } elseif ($dir == 'auction_page' && $page == 'delete') {
+        include 'auction_page/delete.php';
+    } elseif ($dir == 'auction_page' && $page == 'report') {
+        include "auction_page/report.php";
+    }
     ?>
 
 </div>
