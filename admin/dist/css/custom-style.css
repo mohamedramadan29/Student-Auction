@@ -280,3 +280,8 @@ label:not(.form-check-label):not(.custom-file-label) {
 .nav-sidebar .nav-link p {
     font-size: 14px;
 }
+table.dataTable>thead>tr>th:not(.sorting_disabled), table.dataTable>thead>tr>td:not(.sorting_disabled) {
+    padding-right: 10px;
+    text-align: center;
+    font-size: 15px;
+}

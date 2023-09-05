@@ -76,101 +76,79 @@
                                         <th> المرحلة </th>
                                         <th> رقم الكارت </th>
                                         <th> الرصيد </th>
+                                        <th> الحالة </th>
+                                        <th> المنتجات </th>
                                         <th> التحكم في الرصيد </th>
                                         <th> </th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php
-                                    $stmt = $connect->prepare("SELECT * FROM categories ORDER BY id DESC");
+                                    $stmt = $connect->prepare("SELECT * FROM students ORDER BY id DESC");
                                     $stmt->execute();
-                                    $allcat = $stmt->fetchAll();
+                                    $allstudents = $stmt->fetchAll();
                                     $i = 0;
-                                    foreach ($allcat as $cat) {
+                                    foreach ($allstudents as $student) {
                                         $i++;
                                     ?>
                                         <tr>
                                             <td> <?php echo $i; ?> </td>
-                                            <td> <?php echo  $cat['name']; ?> </td>
+                                            <td> <?php echo  $student['name']; ?> </td>
+                                            <td> <?php echo  $student['stage']; ?> </td>
+                                            <td> <?php echo  $student['card_number']; ?> </td>
+                                            <td> <?php echo  $student['balance']; ?> </td>
                                             <td> <?php
-                                                    if ($cat['parent_id'] != 0) { ?>
-                                                    <span class="badge badge-warning"> قسم فرعي </span>
-                                                    <?php
-                                                        $stmt = $connect->prepare("SELECT * FROM categories WHERE id = ? LIMIT 1");
-                                                        $stmt->execute(array($cat['parent_id']));
-                                                        $sub_data = $stmt->fetch();
+                                                    if ($student['status'] == 1) {
                                                     ?>
-                                                    <span class="badge badge-info"> <?php echo $sub_data['name']; ?> </span>
-                                                    <?php
-                                                    ?>
+                                                    <span class="badge badge-success"> مفعل </span>
                                                 <?php
-                                                    } else { ?>
-                                                    <span class="badge badge-success"> قسم رئيسي </span>
-                                                <?php
-                                                    }  ?>
-                                            </td>
-                                            <td> <?php echo  $cat['slug']; ?> </td>
-                                            <td> <?php echo  $cat['tags']; ?> </td>
-                                            <td>
-                                                <?php if (strpos($cat['image'], "https://www.mshtly.com") !== false) { ?>
-                                                    <img style="width: 80px; height:80px;" src="<?php echo $cat['image']; ?>" alt="">
-                                                <?php
-                                                } else {
+                                                    } else {
                                                 ?>
-                                                    <img style="width: 80px; height:80px;" src="category_images/<?php echo $cat['image']; ?>" alt="">
+                                                    <span class="badge badge-danger"> غير مفعل </span>
                                                 <?php
-                                                } ?>
+                                                    } ?>
                                             </td>
+                                            <td> <a href="#" class="btn btn-primary btn-sm"> منتجات الطالب </a> </td>
+                                            <td> <input type="number" class="form-control" value="balance_change" placeholder="ادخال رصيد"> </td>
+
                                             <td>
-                                                <button type="button" class="btn btn-success btn-sm waves-effect" data-toggle="modal" data-target="#edit-Modal_<?php echo $cat['id']; ?>"> تعديل <i class='fa fa-pen'></i> </button>
-                                                <a href="main.php?dir=categories&page=delete&cat_id=<?php echo $cat['id']; ?>" class="confirm btn btn-danger btn-sm"> حذف <i class='fa fa-trash'></i> </a>
+                                                <button type="button" class="btn btn-success btn-sm waves-effect" data-toggle="modal" data-target="#edit-Modal_<?php echo $student['id']; ?>"> <i class='fa fa-pen'></i> </button>
+                                                <a href="main.php?dir=students&page=delete&cat_id=<?php echo $student['id']; ?>" class="confirm btn btn-danger btn-sm"> <i class='fa fa-trash'></i> </a>
                                             </td>
                                         </tr>
                                         <!-- EDIT NEW CATEGORY MODAL   -->
-                                        <div class="modal fade" id="edit-Modal_<?php echo $cat['id']; ?>" tabindex="-1" role="dialog">
+                                        <div class="modal fade" id="edit-Modal_<?php echo $student['id']; ?>" tabindex="-1" role="dialog">
                                             <div class="modal-dialog" role="document">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h4 class="modal-title"> تعديل القسم </h4>
+                                                        <h4 class="modal-title"> تعديل الطالب </h4>
                                                     </div>
-                                                    <form method="post" action="main.php?dir=categories&page=edit" enctype="multipart/form-data">
+                                                    <form method="post" action="main.php?dir=students&page=edit" enctype="multipart/form-data">
                                                         <div class="modal-body">
                                                             <div class="form-group">
-                                                                <input type='hidden' name="cat_id" value="<?php echo $cat['id']; ?>">
+                                                                <input type='hidden' name="student_id" value="<?php echo $student['id']; ?>">
                                                                 <label for="Company-2" class="block">الأسم </label>
-                                                                <input id="Company-2" required name="name" type="text" class="form-control required" value="<?php echo  $cat['name'] ?>">
+                                                                <input id="Company-2" required name="name" type="text" class="form-control required" value="<?php echo  $student['name'] ?>">
                                                             </div>
                                                             <div class="form-group">
-                                                                <label for="Company-2" class="block"> القسم الرئيسي </label>
-                                                                <select required class='form-control select2' name='parent_id'>
-                                                                    <option value="0"> -- اختر -- </option>
-                                                                    <option value="0" <?php if ($cat['parent_id'] == 0) echo 'selected'; ?>> بدون </option>
-                                                                    <?php
-                                                                    $stmt = $connect->prepare("SELECT * FROM categories WHERE id != ?");
-                                                                    $stmt->execute(array($cat['id']));
-                                                                    $allcat = $stmt->fetchAll();
-                                                                    foreach ($allcat as $cats) {
-                                                                    ?>
-                                                                        <option <?php if ($cats['id'] == $cat['parent_id']) echo 'selected'; ?> value="<?php echo $cats['id']; ?>"> <?php echo $cats['name'] ?> </option>
-                                                                    <?php
-                                                                    }
-                                                                    ?>
+                                                                <label for="Company-2" class="block"> المرحلة </label>
+                                                                <input required id="Company-2" name="stage" type="text" class="form-control required" value="<?php echo  $student['stage'] ?>">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="Company-2" class="block"> رقم البطاقة </label>
+                                                                <input required id="Company-2" name="card_number" type="number" class="form-control required" value="<?php echo  $student['card_number'] ?>">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="Company-2" class="block"> الرصيد </label>
+                                                                <input required id="Company-2" name="balance" type="number" class="form-control required" value="<?php echo  $student['balance'] ?>">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="Company-2" class="block"> حالة الطالب </label>
+                                                                <select name="status" class="form-control select2" id="">
+                                                                    <option value=""> حالة الطالب </option>
+                                                                    <option <?php if ($student['status'] == 1) echo 'selected'; ?> value="1"> مفعل </option>
+                                                                    <option <?php if ($student['status'] == 0) echo 'selected'; ?> value="0">غير مفعل </option>
                                                                 </select>
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label for="Company-2" class="block"> الوصف </label>
-                                                                <textarea id="Company-2" name="description" class="form-control"><?php echo  $cat['description'] ?></textarea>
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label for="customFile"> تعديل صورة القسم </label>
-                                                                <div class="custom-file">
-                                                                    <input type="file" class="custom-file-input" id="customFile" accept='image/*' name="main_image">
-                                                                    <label class="custom-file-label" for="customFile">اختر الصورة</label>
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label for="Company-2" class="block"> اضافة التاج <span class="badge badge-danger"> من فضلك افصل بين كل تاج والاخر (,) </span> </label>
-                                                                <input required id="Company-2" name="tags" type="text" class="form-control" value="<?php echo  $cat['tags']; ?>">
                                                             </div>
                                                         </div>
                                                         <div class="modal-footer">
@@ -194,45 +172,25 @@
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h4 class="modal-title">أضافة قسم </h4>
+                                <h4 class="modal-title">أضافة طالب </h4>
                             </div>
-                            <form action="main.php?dir=categories&page=add" method="post" enctype="multipart/form-data">
+                            <form action="main.php?dir=students&page=add" method="post" enctype="multipart/form-data">
                                 <div class="modal-body">
                                     <div class="form-group">
                                         <label for="Company-2" class="block"> الأسم </label>
-                                        <input required id="Company-2" name="name" type="text" class="form-control required">
+                                        <input required id="Company-2" name="name" type="text" class="form-control required" value="<?php if (isset($_REQUEST['name'])) echo $_REQUEST['name']; ?>">
                                     </div>
                                     <div class="form-group">
-                                        <label for="Company-2" class="block"> القسم الرئيسي </label>
-                                        <select required class='form-control select2' name='parent_id'>
-                                            <option value="0"> -- اختر -- </option>
-                                            <option value="0"> بدون </option>
-                                            <?php
-                                            $stmt = $connect->prepare("SELECT * FROM categories");
-                                            $stmt->execute();
-                                            $allcat = $stmt->fetchAll();
-                                            foreach ($allcat as $cat) {
-                                            ?>
-                                                <option value="<?php echo $cat['id']; ?>"> <?php echo $cat['name'] ?> </option>
-                                            <?php
-                                            }
-                                            ?>
-                                        </select>
+                                        <label for="Company-2" class="block"> المرحلة </label>
+                                        <input required id="Company-2" name="stage" type="text" class="form-control required">
                                     </div>
                                     <div class="form-group">
-                                        <label for="Company-2" class="block"> الوصف </label>
-                                        <textarea id="Company-2" name="description" class="form-control"></textarea>
+                                        <label for="Company-2" class="block"> رقم البطاقة </label>
+                                        <input required id="Company-2" name="card_number" type="number" class="form-control required">
                                     </div>
                                     <div class="form-group">
-                                        <label for="customFile"> صورة القسم </label>
-                                        <div class="custom-file">
-                                            <input required type="file" class="custom-file-input" id="customFile" accept='image/*' name="main_image">
-                                            <label class="custom-file-label" for="customFile">اختر الصورة</label>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="Company-2" class="block"> اضافة التاج <span class="badge badge-danger"> من فضلك افصل بين كل تاج والاخر (,) </span> </label>
-                                        <input required id="Company-2" name="tags" type="text" class="form-control">
+                                        <label for="Company-2" class="block"> الرصيد </label>
+                                        <input required id="Company-2" name="balance" type="number" class="form-control required">
                                     </div>
                                 </div>
                                 <div class="modal-footer">
