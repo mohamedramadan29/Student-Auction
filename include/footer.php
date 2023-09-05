@@ -1,13 +1,13 @@
 <!-- Footer -->
 <!-- Whats App button -->
 <div class="whatsapp_bottom">
-	<a href="https://wa.me/+9720503088409"> Contact Us <i class="fa fa-whatsapp"></i> </a>
+	<a href="https://wa.me/+9720503088409"> تواصل معنا  <i class="fa fa-whatsapp"></i> </a>
 </div>
 <!--  Whats App Button  -->
-<footer class="bg3 p-t-75 p-b-32">
+<footer class="bg3 p-b-10">
 	<div class="container">
  
-		<div class="p-t-40">
+		<div class="" style="padding-top: 15px;">
 			<p class="stext-107 cl6 txt-center">
 				<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 				  جميع الحقوق محفوظة    &copy;<script>
