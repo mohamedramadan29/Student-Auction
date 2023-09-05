@@ -17,9 +17,11 @@ if (isset($_POST['product_id'])) {
 // get the last product to make auction
 $stmt = $connect->prepare("SELECT * FROM auction_page ORDER BY id DESC LIMIT 1");
 $stmt->execute();
+
 $action_data = $stmt->fetch();
 $last_product = $action_data['product_id'];
 $last_price = $action_data['last_price'];
+$action_id = $action_data['id'];
 ////
 $stmt = $connect->prepare("SELECT * FROM products WHERE id = ?");
 $stmt->execute(array($last_product));
@@ -47,6 +49,34 @@ $product_image = "products/images/" . $product_data['image'];
             <?php
             $last_price_after_step = $last_price + $product_step;
             ?>
+            <br>
+            <div class="student_win">
+                <!-- get the last and win student -->
+                <?php
+                $stmt = $connect->prepare("SELECT * FROM action_steps WHERE action_id = ? ORDER BY id DESC LIMIT 1");
+                $stmt->execute(array($action_id));
+                $last_action_step_data = $stmt->fetch();
+                $count = $stmt->rowCount();
+                if ($count > 0) {
+
+                    $student_owner = $last_action_step_data['student_id'];
+                    /////////////  get the studen data  ///////////// 
+                    $stmt = $connect->prepare("SELECT * FROM students WHERE id = ?");
+                    $stmt->execute(array($student_owner));
+                    $student_data = $stmt->fetch();
+                    $student_name = $student_data['name'];
+                ?>
+                    <table class="table table-bordered table-active">
+                        <tr>
+                            <th> اسم الفائز حتي الان </th>
+                            <th> <?php echo $student_name; ?> </th>
+                            <th> السعر النهائي :: <?php echo $last_price ?> ريال </th>
+                        </tr>
+                    </table>
+                <?php
+                }
+                ?>
+            </div>
         </div>
         <div class="row">
             <div class="col-12">
@@ -119,14 +149,15 @@ $product_image = "products/images/" . $product_data['image'];
                                                 <?php
                                                 if ($student['balance'] >= $last_price_after_step) {
                                                 ?>
-                                                    <button type="submit" name="action" class="btn btn-primary btn-sm"> مزايدة </button>
+                                                    <form action="" method="post" enctype="multipart/form-data">
+                                                        <input type="hidden" name="student_id" value="<?php echo $student['id']; ?>">
+                                                        <button type="submit" name="action_step" class="btn btn-primary btn-sm"> مزايدة </button>
+                                                    </form>
                                                 <?php
                                                 }
                                                 ?>
-
                                             </td>
                                         </tr>
-
                                     <?php
                                     }
                                     ?>
@@ -142,3 +173,28 @@ $product_image = "products/images/" . $product_data['image'];
     </div>
     <!-- /.container-fluid -->
 </section>
+
+<?php
+if (isset($_POST['action_step'])) {
+    $product_id = $last_product;
+    $action_id = $action_id;
+    $student_id = $_POST['student_id'];
+    $step_price = $product_step;
+    $stmt = $connect->prepare("INSERT INTO action_steps (action_id,student_id,step_price)
+    VALUES (:zaction_id,:zstudent_id,:zstep_price)
+    ");
+    $stmt->execute(array(
+        "zaction_id" => $action_id,
+        "zstudent_id" => $student_id,
+        "zstep_price" => $step_price
+    ));
+    if ($stmt) {
+        // update last price 
+        $last_price = $last_price + $step_price;
+        $stmt = $connect->prepare("UPDATE auction_page SET last_price = ? WHERE id = ?");
+        $stmt->execute(array($last_price, $action_id));
+        header("Location:main?dir=auction_page&page=report");
+    }
+}
+
+?>
