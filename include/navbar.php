@@ -6,7 +6,8 @@
             <nav class="limiter-menu-desktop p-l-45">
                 <!-- Logo desktop -->
                 <a href="index" class="logo">
-                    <img width="180px !important" src="images/logo.svg" alt="IMG-LOGO">
+                    <!-- <img width="180px !important" src="images/logo.svg" alt="IMG-LOGO"> -->
+                    فري
                 </a>
                 <!-- Menu desktop -->
                 <div class="menu-desktop">
