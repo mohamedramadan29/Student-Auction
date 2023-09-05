@@ -6,84 +6,13 @@
 <!--  Whats App Button  -->
 <footer class="bg3 p-t-75 p-b-32">
 	<div class="container">
-		<div class="row">
-			<div class="col-sm-6 col-lg-3 p-b-50">
-				<h4 class="stext-301 cl0 p-b-30">
-					Categories
-				</h4>
  
-			</div>
-
-			<div class="col-sm-6 col-lg-3 p-b-50">
-				<h4 class="stext-301 cl0 p-b-30">
-					Help
-				</h4>
-
-				<ul>
-					<li class="p-b-10">
-						<a href="shop" class="stext-107 cl7 hov-cl1 trans-04">
-							All Models
-						</a>
-					</li>
-
-					<li class="p-b-10">
-						<a href="contact" class="stext-107 cl7 hov-cl1 trans-04">
-							Contact US
-						</a>
-					</li>
-				</ul>
-			</div>
-
-			<div class="col-sm-6 col-lg-3 p-b-50">
-				<h4 class="stext-301 cl0 p-b-30">
-					GET IN TOUCH
-				</h4>
-
-				<p class="stext-107 cl7 size-201">
-
-				<ul>
-					<li class="p-b-10">
-						<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-							<i class="fa fa-phone"> + 9720505245003 </i>
-						</a>
-					</li>
-					<li class="p-b-10">
-						<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-							<i class="fa fa-whatsapp"> + 972050-3088409 </i>
-						</a>
-					</li>
-				</ul>
-				</p>
-
-				<div class="p-t-27">
-					<a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
-						<i class="fa fa-facebook"></i>
-					</a>
-
-					<a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
-						<i class="fa fa-instagram"></i>
-					</a>
-
-					<a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
-						<i class="fa fa-pinterest-p"></i>
-					</a>
-				</div>
-			</div>
-
-			<div class="col-sm-6 col-lg-3 p-b-50">
-				<h4 class="stext-301 cl0 p-b-30 text-center">
-					LD Importer 
-				</h4>
-				<img style="margin: auto; display: block;" width="200px" src="images/logo.svg" alt="">
-			</div>
-		</div>
-
 		<div class="p-t-40">
 			<p class="stext-107 cl6 txt-center">
 				<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-				Copyright &copy;<script>
+				  جميع الحقوق محفوظة    &copy;<script>
 					document.write(new Date().getFullYear());
-				</script> All rights reserved | Made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://wa.me/+201011642731" target="_blank">Mr</a>
+				</script>| بواسطة <i class="fa fa-heart-o" aria-hidden="true"></i>   <a href="https://wa.me/+201011642731" target="_blank">Mr</a>
 				<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 
 			</p>

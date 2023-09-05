@@ -18,7 +18,7 @@
                             <a href="balance"> معرفة الرصيد </a> <!-- shop  -->
                         </li>
                         <li>
-                            <a href="shop"> المزاد </a> <!-- shop  -->
+                            <a href="auction_page"> المزاد </a> <!-- shop  -->
                         </li>
                     </ul>
                 </div>

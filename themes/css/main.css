@@ -273,13 +273,11 @@ body {
 .main-menu>li>a {
   font-family: 'Cairo', sans-serif;
   ;
-  font-size: 14px;
+  font-size: 17px;
   color: #333;
   padding: 5px 0px;
   transition: all 0.4s;
-  -webkit-transition: all 0.4s;
-  -o-transition: all 0.4s;
-  -moz-transition: all 0.4s;
+  text-decoration: none;
 }
 
 .header-v3 .main-menu>li>a {
@@ -3844,3 +3842,67 @@ footer .stext-107 {
 }
 
 /************ END BALANCE PAGE **********/
+
+/******* start product_action *************/
+.product_action {
+  background: #fff;
+  padding: 20px;
+  text-align: center;
+  border: 1px solid #ccc;
+  box-shadow: 0px 0px 6px 2px #edebeb;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  padding-bottom: 50px;
+  padding-top: 50px;
+}
+
+.product_action .product_data {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.product_action img {
+  max-width: 100%;
+  max-height: 310px;
+  border-radius: 10px;
+}
+
+.product_action h3 {
+  font-weight: bold;
+  font-size: 26px;
+  margin: 10px;
+}
+
+.product_action p {
+  margin-right: 34px;
+  text-align: right;
+  margin-top: 20px;
+}
+
+.product_action p span {
+  font-weight: bold;
+  color: var(--main_color);
+}
+
+.product_action .price_now {
+  font-weight: bold;
+  border: 1px solid #ccc;
+  padding: 10px;
+  max-width: 45%;
+  text-align: center;
+  margin: auto;
+  margin-top: 30px;
+  padding: 15px;
+  border-radius: 10px;
+  background-color: #f1f1f1;
+  font-size: 22px;
+}
+
+.product_action .price_now span {
+  color: var(--main_color);
+}
+.product_action table tr th{
+  padding: 15px;
+}
