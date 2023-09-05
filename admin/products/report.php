@@ -98,6 +98,7 @@
                                             <td>
                                                 <form action="main?dir=auction_page&page=report" method="post">
                                                     <input type="hidden" name="product_id" value="<?php echo $product['id'] ?>">
+                                                    <input type="hidden" name="price" value="<?php echo $product['price_start_from'] ?>">
                                                     <button type="submit" class="btn btn-warning btn-sm"> زايد <i class="fa fa-eye"></i> </button>
                                                 </form>
 
