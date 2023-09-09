@@ -103,7 +103,16 @@
                                                     <button type="submit" class="btn btn-warning btn-sm"> زايد <i class="fa fa-eye"></i> </button>
                                                 </form>
                                             </td>
-                                            <td> <a href="main.php?dir=products&page=sales_products&product_id=<?php echo $product['id']; ?>" class="btn btn-primary btn-sm"> عمليات البيع </a> </td>
+                                            <td> <a href="main.php?dir=products&page=sales_products&product_id=<?php echo $product['id']; ?>" class="btn btn-primary btn-sm"> عمليات البيع </a>
+                                                <?php
+                                                $stmt = $connect->prepare("SELECT * FROM auction_page WHERE product_id = ? AND student_win !=''");
+                                                $stmt->execute(array($product['id']));
+                                                $allwins  = count($stmt->fetchAll());
+                                                ?>
+                                                <br>
+                                                <span class="badge badge-danger"> <?php echo $allwins; ?> </span>
+                                                
+                                            </td>
                                             <td>
                                                 <button type="button" class="btn btn-success btn-sm waves-effect" data-toggle="modal" data-target="#edit-Modal_<?php echo $product['id']; ?>"> <i class='fa fa-pen'></i> </button>
                                                 <a href="main.php?dir=products&page=delete&cat_id=<?php echo $product['id']; ?>" class="confirm btn btn-danger btn-sm"> <i class='fa fa-trash'></i> </a>

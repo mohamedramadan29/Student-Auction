@@ -73,6 +73,7 @@
                                     <tr>
                                         <th> # </th>
                                         <th> اسم المرحلة </th>
+                                        <th> عدد الطلاب </th>
                                         <th> </th>
                                     </tr>
                                 </thead>
@@ -88,6 +89,13 @@
                                         <tr>
                                             <td> <?php echo $i; ?> </td>
                                             <td> <?php echo $cat['level_name']; ?> </td>
+                                            <td>
+                                                <?php
+                                                $stmt = $connect->prepare("SELECT * FROM students WHERE stage = ?");
+                                                $stmt->execute(array($cat['level_name']));
+                                                $student_num = count($stmt->fetchAll());
+                                                echo $student_num; ?>
+                                            </td>
 
                                             <td>
                                                 <button type="button" class="btn btn-success btn-sm waves-effect" data-toggle="modal" data-target="#edit-Modal_<?php echo $cat['id']; ?>"> تعديل <i class='fa fa-pen'></i> </button>
