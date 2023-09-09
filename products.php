@@ -24,11 +24,15 @@ include "init.php";
 								<a class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
 									<?php echo $product['name']; ?>
 								</a>
-
-								<span class="stext-105 cl3">
-								<?php echo $product['price_start_from']; ?> ريال
-								</span>
-							</div> 
+								<p> تبدا المزايدة من : <span class="stext-105 cl3">
+										<?php echo $product['price_start_from']; ?> ريال
+									</span>
+								</p>
+								<p> المزايدة : <span class="stext-105 cl3">
+										<?php echo $product['step_price']; ?> ريال
+									</span>
+								</p>
+							</div>
 						</div>
 					</div>
 				</div>

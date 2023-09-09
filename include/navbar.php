@@ -6,23 +6,23 @@
             <nav class="limiter-menu-desktop p-l-45">
                 <!-- Logo desktop -->
                 <a href="index" class="logo">
-                    <!-- <img width="180px !important" src="images/logo.svg" alt="IMG-LOGO"> -->
-                    فري
+                    <img width="120px !important" src="images/bank.png" alt="IMG-LOGO">
+
                 </a>
                 <!-- Menu desktop -->
                 <div class="menu-desktop">
                     <ul class="main-menu">
-                        <li class="active-menu">
-                            <a href="index"> الرئيسية </a> <!-- index -->
+                        <li <?php if (basename($_SERVER['PHP_SELF']) === 'index.php') echo 'class="active-menu"'; ?>>
+                            <a href="index">الرئيسية</a>
                         </li>
-                        <li class="">
-                            <a href="balance"> بنك ثري </a> <!-- index -->
+                        <li <?php if (basename($_SERVER['PHP_SELF']) === 'balance.php') echo 'class="active-menu"'; ?>>
+                            <a href="balance">بنك ثري</a>
                         </li>
-                        <li>
-                            <a href="products"> مزاد ثري </a> <!-- shop  -->
+                        <li <?php if (basename($_SERVER['PHP_SELF']) === 'products.php') echo 'class="active-menu"'; ?>>
+                            <a href="products">مزاد ثري</a>
                         </li>
-                        <li>
-                            <a href="auction_page"> برنامج ثري </a> <!-- shop  -->
+                        <li <?php if (basename($_SERVER['PHP_SELF']) === 'auction_page.php') echo 'class="active-menu"'; ?>>
+                            <a href="auction_page">برنامج ثري</a>
                         </li>
                     </ul>
                 </div>
@@ -34,7 +34,7 @@
     <div class="wrap-header-mobile">
         <!-- Logo moblie -->
         <div class="logo-mobile">
-            <img width="180px" src="images/logo.svg" alt="IMG-LOGO">
+            <img width="180px" src="images/bank.png" alt="IMG-LOGO">
         </div>
         <!-- Button show menu -->
         <div class="btn-show-menu-mobile hamburger hamburger--squeeze">
@@ -48,11 +48,17 @@
     <!-- Menu Mobile -->
     <div class="menu-mobile">
         <ul class="main-menu-m">
-            <li>
-                <a href="index"> الرئيسية </a>
+            <li <?php if (basename($_SERVER['PHP_SELF']) === 'index.php') echo 'class="active-menu"'; ?>>
+                <a href="index">الرئيسية</a>
             </li>
-            <li>
-                <a href="shop">Shop</a>
+            <li <?php if (basename($_SERVER['PHP_SELF']) === 'balance.php') echo 'class="active-menu"'; ?>>
+                <a href="balance">بنك ثري</a>
+            </li>
+            <li <?php if (basename($_SERVER['PHP_SELF']) === 'products.php') echo 'class="active-menu"'; ?>>
+                <a href="products">مزاد ثري</a>
+            </li>
+            <li <?php if (basename($_SERVER['PHP_SELF']) === 'auction_page.php') echo 'class="active-menu"'; ?>>
+                <a href="auction_page">برنامج ثري</a>
             </li>
         </ul>
     </div>

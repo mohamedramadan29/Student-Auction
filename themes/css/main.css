@@ -550,7 +550,7 @@ body {
   background-color: #fff;
   padding: 15px;
   display: none;
-
+  flex-direction: row-reverse;
   box-shadow: 0 0px 3px 0px rgba(0, 0, 0, 0.2);
 }
 
@@ -3974,3 +3974,31 @@ footer .stext-107 {
   font-size: 18px;
   color: var(--main_color);
 }
+
+/** START WAIT PAGE */
+.wait_page {}
+
+.wait_page .data {
+  background-color: #fff;
+  width: 50%;
+  margin: auto;
+  margin-top: 20px;
+  box-shadow: 0px 0px 10px 2px #f3f3f3;
+  border-radius: 10px;
+  text-align: center;
+  padding: 15px;
+}
+
+.wait_page .data img {
+  max-width: 100%;
+  width: 400px;
+}
+
+.wait_page .data p {
+  font-size: 22px;
+  color: var(--main_color);
+  font-weight: bold;
+  line-height: 2;
+}
+
+/* END WAIT PAGE */
