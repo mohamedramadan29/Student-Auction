@@ -3836,7 +3836,8 @@ footer .stext-107 {
   background-color: var(--main_color);
   border-color: var(--main_color);
 }
-.balance_account .error_message{
+
+.balance_account .error_message {
   text-align: center;
   margin-top: 15px;
 }
@@ -3903,6 +3904,40 @@ footer .stext-107 {
 .product_action .price_now span {
   color: var(--main_color);
 }
-.product_action table tr th{
+
+.product_action table tr th {
   padding: 15px;
 }
+
+/* START HOME PAGE */
+.home_page {}
+
+.home_page .data {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.home_page .data .info {
+  background-color: #fff;
+  padding: 35px;
+  box-shadow: 0px 0px 10px 0px #ddd;
+  border-radius: 10px;
+  max-width: 300px;
+  margin: auto !important;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 20px !important;
+}
+
+.home_page .data .info img {
+  max-width: 100%;
+  width: 250px;
+}
+.home_page .data .programme{
+margin: auto;
+display: block;
+}
+/* END HOME PAGE */

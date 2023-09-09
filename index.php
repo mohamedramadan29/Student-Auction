@@ -1,47 +1,39 @@
 <?php
 ob_start();
 session_start();
+$nonavbar = "";
 include "init.php";
+
 ?>
-<!-- Product -->
-<div class="bg0 m-t-23 p-b-140">
-	<div class="container">
-		<div class="row">
-			<?php
-			$stmt = $connect->prepare("SELECT * FROM products WHERE status = 1");
-			$stmt->execute();
-			$allproducts = $stmt->fetchAll();
-			foreach ($allproducts as $product) {
-			?>
-				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35">
-					<!-- Block2 -->
-					<div class="block2">
-						<div class="block2-pic hov-img0">
-							<img src="admin/products/images/<?php echo $product['image']; ?>" alt="IMG-PRODUCT">
-						</div>
-						<div class="block2-txt flex-w flex-t p-t-14">
-							<div class="block2-txt-child1 flex-col-l ">
-								<a class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-									<?php echo $product['name']; ?>
-								</a>
-
-								<span class="stext-105 cl3">
-								<?php echo $product['price_start_from']; ?> ريال
-								</span>
-							</div> 
-						</div>
-					</div>
-				</div>
-			<?php
-			}
-
-			?>
-
-		</div>
-
-	</div>
+<div class="home_page">
+    <div class="container">
+        <div class="data">
+            <div class="row">
+                <div class="col-lg-6">
+                    <a href="balance">
+                        <div class="info">
+                            <img src="images/bank.png" alt="">
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-6">
+                    <a href="products">
+                        <div class="info">
+                            <img src="images/action.png" alt="">
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-12">
+                    <a href="products">
+                        <div class="info programme">
+                            <img src="images/programme.png" alt="">
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-
 <?php
 include $tem . "footer.php";
 ob_end_flush();
