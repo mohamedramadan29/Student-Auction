@@ -135,8 +135,7 @@ if (isset($_POST['add_balance'])) {
                                                 <td>
                                                     <input type="text" disabled class="form-control new_balance_element" data-id="<?php echo $student['id']; ?>" value="<?php echo $student['balance']; ?>">
                                                 </td>
-
-                                                <td> <a href="#" class="btn btn-primary btn-sm"> منتجات الطالب </a>
+                                                <td> <a href="main.php?dir=students&page=student_win_products&student_id=<?php echo $student['id']; ?>" class="btn btn-primary btn-sm"> منتجات الطالب </a>
                                                     <!-- get the products number student win -->
                                                     <?php
                                                     $stmt = $connect->prepare("SELECT * FROM auction_page WHERE student_win = ?");

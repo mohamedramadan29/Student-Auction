@@ -37,6 +37,8 @@ if (isset($_SESSION['admin_username'])) {
         include "students/report.php";
     } elseif ($dir == 'students' && $page == 'accounts_report') {
         include "students/accounts_report.php";
+    } elseif ($dir == 'students' && $page == 'student_win_products') {
+        include "students/student_win_products.php";
     }
     // START Products
     if ($dir == 'products' && $page == 'add') {

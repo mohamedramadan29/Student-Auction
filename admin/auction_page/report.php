@@ -107,6 +107,27 @@ $product_image = "products/images/" . $product_data['image'];
             $student_owner = $student_owner;
             $stmt = $connect->prepare("UPDATE auction_page SET student_win = ? WHERE id = ?");
             $stmt->execute(array($student_owner, $action_id));
+            // update student balance 
+            // get the old balance 
+            $stmt = $connect->prepare("SELECT * FROM students WHERE id = ?");
+            $stmt->execute(array($student_owner));
+            $owner_data = $stmt->fetch();
+            $owner_data_balance = $owner_data['balance'];
+            $new_owner_balance = $owner_data_balance - $last_price;
+            // update data 
+            $stmt = $connect->prepare("UPDATE students SET balance = ? WHERE id = ?");
+            $stmt->execute(array($new_owner_balance, $student_owner));
+            // update in student accounts 
+            $stmt = $connect->prepare("INSERT INTO student_accounts (student_id,price,date,reason,product_id)
+            VALUES(:zstudent_id,:zprice,:zdate,:zreason,:zproduct)
+            ");
+            $stmt->execute(array(
+                "zstudent_id" => $student_owner,
+                "zprice" => - ($last_price),
+                "zdate" => date("y-m-d"),
+                "zreason" => "شراء منتج من المزاد",
+                "zproduct" => $last_product
+            ));
             header("Location:main?dir=products&page=report");
         }
 
