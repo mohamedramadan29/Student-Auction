@@ -64,12 +64,13 @@ if (isset($_POST['add_balance'])) {
             $balance_amount = $balance_amounts[$i];
             $student_id = $students_id[$i];
             if (!empty($balance_amount)) {
-                $stmt = $connect->prepare("INSERT INTO student_accounts(student_id, price, date)
-                                VALUES(:zstudent_id,:zprice,:zdate)");
+                $stmt = $connect->prepare("INSERT INTO student_accounts(student_id, price, date,reason)
+                                VALUES(:zstudent_id,:zprice,:zdate,:zreason)");
                 $stmt->execute(array(
                     "zstudent_id" => $student_id,
                     "zprice" => $balance_amount,
                     "zdate" => date("Y-m-d"),
+                    "zreason" => "شحن رصيد",
                 ));
                 if ($stmt) {
                     $stmt = $connect->prepare("SELECT * FROM students WHERE id=?");

@@ -13,13 +13,16 @@
                 <div class="menu-desktop">
                     <ul class="main-menu">
                         <li class="active-menu">
-                            <a href="index"> المنتجات </a> <!-- index -->
+                            <a href="index"> الرئيسية </a> <!-- index -->
+                        </li>
+                        <li class="">
+                            <a href="balance"> بنك ثري </a> <!-- index -->
                         </li>
                         <li>
-                            <a href="balance"> معرفة الرصيد </a> <!-- shop  -->
+                            <a href="products"> مزاد ثري </a> <!-- shop  -->
                         </li>
                         <li>
-                            <a href="auction_page"> المزاد </a> <!-- shop  -->
+                            <a href="auction_page"> برنامج ثري </a> <!-- shop  -->
                         </li>
                     </ul>
                 </div>

@@ -4,7 +4,7 @@ body {
 }
 
 * {
-  --main_color: #f39c12;
+  --main_color: #F5B62E;
   --second_color: #f1c40f;
 }
 
@@ -3730,7 +3730,7 @@ input.num-product::-webkit-inner-spin-button {
 .whatsapp_bottom {
   position: fixed;
   bottom: 20px;
-  left: 15px;
+  right: 15px;
   background-color: #25D366;
   padding: 10px;
   border-radius: 28px;
@@ -3801,7 +3801,7 @@ footer .stext-107 {
   padding: 40px;
   border-radius: 10px;
   box-shadow: 0px 0px 10px 2px #efe9e9;
-  max-width: 60%;
+  max-width: 70%;
   margin: auto;
 }
 
@@ -3936,8 +3936,41 @@ footer .stext-107 {
   max-width: 100%;
   width: 250px;
 }
-.home_page .data .programme{
-margin: auto;
-display: block;
+
+.home_page .data .programme {
+  margin: auto;
+  display: block;
 }
+
 /* END HOME PAGE */
+.the_last_student_win {
+  background-color: #017896;
+  width: 370px;
+  border-radius: 10px;
+  padding: 15px;
+  color: #fff;
+  margin: auto
+}
+
+.the_last_student_win .info {
+  text-align: center;
+}
+
+.the_last_student_win .info h2 {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.the_last_student_win .info p {
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+  margin-left: 30px;
+}
+
+.the_last_student_win .info h4 {
+  margin-bottom: 20px;
+  font-weight: bold;
+  font-size: 18px;
+  color: var(--main_color);
+}

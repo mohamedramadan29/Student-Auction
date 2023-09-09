@@ -31,7 +31,6 @@ include "init.php";
                     if ($count > 0) {
             ?>
                         <br>
-                        <br>
                         <table class="table table-bordered table-hover table-primary">
                             <thead>
                                 <tr>
@@ -46,6 +45,32 @@ include "init.php";
                                     <td> <?php echo $acount_data['card_number'] ?> </td>
                                     <td> <?php echo $acount_data['balance'] ?> ريال </td>
                                 </tr>
+                            </tbody>
+                        </table>
+                        <h4 style="margin-bottom: 11px;color: #343333;font-size: 17px;"> كشف حساب الطالب </h4>
+                        <table class="table table-bordered table-hover table-success">
+                            <thead>
+                                <tr>
+                                    <th> الرصيد </th>
+                                    <th> التاريخ </th>
+                                    <th> السبب </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                $stmt = $connect->prepare("SELECT * FROM student_accounts WHERE student_id = ?");
+                                $stmt->execute(array($acount_data['id']));
+                                $allrecords = $stmt->fetchAll();
+                                foreach ($allrecords as $record) {
+                                ?>
+                                    <tr>
+                                        <td> <?php echo $record['price'] ?> </td>
+                                        <td> <?php echo $record['date'] ?> </td>
+                                        <td> <?php echo $record['reason'] ?> </td>
+                                    </tr>
+                                <?php
+                                }
+                                ?>
                             </tbody>
                         </table>
                     <?php
