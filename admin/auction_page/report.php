@@ -124,7 +124,7 @@ $product_image = "products/images/" . $product_data['image'];
             $stmt->execute(array(
                 "zstudent_id" => $student_owner,
                 "zprice" => - ($last_price),
-                "zdate" => date("y-m-d"),
+                "zdate" => date("Y-m-d"),
                 "zreason" => "شراء منتج من المزاد",
                 "zproduct" => $last_product
             ));

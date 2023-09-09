@@ -387,7 +387,21 @@ table.dataTable>thead>tr>td:not(.sorting_disabled) {
     height: 35px;
     margin-bottom: 10px;
 }
-.students_data .info .no-balance{
+
+.students_data .info .no-balance {
     cursor: not-allowed;
 }
+
 /******** end student data *******/
+
+.buttons-excel {
+    background: #27ae60;
+    border-color: #27ae60;
+    height: 35px;
+    font-size: 15px;
+    font-weight: normal;
+    margin-bottom: 10px;
+    position: absolute !important;
+    left: 10px;
+    top: 15px;
+}

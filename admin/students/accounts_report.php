@@ -45,8 +45,9 @@ if (isset($_GET['student_id'])) {
                                     <tr>
                                         <th> # </th>
                                         <th> اسم الطالب </th>
-                                        <th> قيمة الايداع </th>
-                                        <th> تاريخ الايداع </th>
+                                        <th> القيمة </th>
+                                        <th> التاريخ </th>
+                                        <th> السبب </th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -60,6 +61,7 @@ if (isset($_GET['student_id'])) {
                                             <td> <?php echo $name ?> </td>
                                             <td> <?php echo $record['price']; ?> </td>
                                             <td> <?php echo $record['date']; ?> </td>
+                                            <td> <?php echo $record['reason']; ?> </td>
                                         </tr>
                                     <?php
                                     }

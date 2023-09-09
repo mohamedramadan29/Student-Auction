@@ -104,7 +104,7 @@ if (isset($_POST['add_balance'])) {
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table id="my_table" class="table table-striped table-bordered">
+                                <table id="my_table2" class="table table-striped table-bordered">
                                     <thead>
                                         <tr>
                                             <th> # </th>
