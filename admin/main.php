@@ -49,6 +49,8 @@ if (isset($_SESSION['admin_username'])) {
         include 'products/delete.php';
     } elseif ($dir == 'products' && $page == 'report') {
         include "products/report.php";
+    } elseif ($dir == 'products' && $page == 'sales_products') {
+        include "products/sales_products.php";
     }
     // START auction_page صفحة المزاد 
     if ($dir == 'auction_page' && $page == 'add') {
@@ -59,6 +61,16 @@ if (isset($_SESSION['admin_username'])) {
         include 'auction_page/delete.php';
     } elseif ($dir == 'auction_page' && $page == 'report') {
         include "auction_page/report.php";
+    }
+    // START EDUCTION LEVEL 
+    if ($dir == 'eduction_level' && $page == 'add') {
+        include "eduction_level/add.php";
+    } elseif ($dir == 'eduction_level' && $page == 'edit') {
+        include "eduction_level/edit.php";
+    } elseif ($dir == 'eduction_level' && $page == 'delete') {
+        include 'eduction_level/delete.php';
+    } elseif ($dir == 'eduction_level' && $page == 'report') {
+        include "eduction_level/report.php";
     }
     ?>
 

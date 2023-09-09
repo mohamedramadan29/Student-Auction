@@ -171,7 +171,19 @@ if (isset($_POST['add_balance'])) {
                                     </div>
                                     <div class="form-group">
                                         <label for="Company-2" class="block"> المرحلة </label>
-                                        <input required id="Company-2" name="stage" type="text" class="form-control required" value="<?php echo  $student['stage'] ?>">
+                                        <select required name="stage" id="" class="select2">
+                                            <option value=""> اختر المرحلة </option>
+                                            <?php
+                                            $stmt = $connect->prepare("SELECT * FROM eduction_level");
+                                            $stmt->execute();
+                                            $allstags = $stmt->fetchAll();
+                                            foreach ($allstags as $stag) {
+                                            ?>
+                                                <option <?php if ($stag['level_name'] == $student['stage']) echo 'selected'; ?> value="<?php echo $stag['level_name']; ?>"> <?php echo $stag['level_name']; ?> </option>
+                                            <?php
+                                            }
+                                            ?>
+                                        </select>
                                     </div>
                                     <div class="form-group">
                                         <label for="Company-2" class="block"> رقم البطاقة </label>
@@ -221,7 +233,19 @@ if (isset($_POST['add_balance'])) {
                         </div>
                         <div class="form-group">
                             <label for="Company-2" class="block"> المرحلة </label>
-                            <input required id="Company-2" name="stage" type="text" class="form-control required">
+                            <select required name="stage" id="" class="select2">
+                                <option value=""> اختر المرحلة </option>
+                                <?php
+                                $stmt = $connect->prepare("SELECT * FROM eduction_level");
+                                $stmt->execute();
+                                $allstags = $stmt->fetchAll();
+                                foreach ($allstags as $stag) {
+                                ?>
+                                    <option value="<?php echo $stag['level_name']; ?>"> <?php echo $stag['level_name']; ?> </option>
+                                <?php
+                                }
+                                ?>
+                            </select>
                         </div>
                         <div class="form-group">
                             <label for="Company-2" class="block"> رقم البطاقة </label>

@@ -77,6 +77,7 @@
                                         <th> رقم المزايدة </th>
                                         <th> صورة المنتج </th>
                                         <th> مزايدة </th>
+                                        <th> عمليات البيع </th>
                                         <th> </th>
                                     </tr>
                                 </thead>
@@ -101,8 +102,8 @@
                                                     <input type="hidden" name="price" value="<?php echo $product['price_start_from'] ?>">
                                                     <button type="submit" class="btn btn-warning btn-sm"> زايد <i class="fa fa-eye"></i> </button>
                                                 </form>
-
                                             </td>
+                                            <td> <a href="main.php?dir=products&page=sales_products&product_id=<?php echo $product['id']; ?>" class="btn btn-primary btn-sm"> عمليات البيع </a> </td>
                                             <td>
                                                 <button type="button" class="btn btn-success btn-sm waves-effect" data-toggle="modal" data-target="#edit-Modal_<?php echo $product['id']; ?>"> <i class='fa fa-pen'></i> </button>
                                                 <a href="main.php?dir=products&page=delete&cat_id=<?php echo $product['id']; ?>" class="confirm btn btn-danger btn-sm"> <i class='fa fa-trash'></i> </a>
