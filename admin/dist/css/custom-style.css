@@ -349,3 +349,45 @@ table.dataTable>thead>tr>td:not(.sorting_disabled) {
 .product_action .price_now span {
     color: #e74c3c;
 }
+
+/****** START students_data *****/
+.students_data {}
+
+.students_data .info {
+    background-color: #017896;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 2px #ccc;
+    margin-bottom: 20px;
+}
+
+.students_data .info h3 {
+    font-size: 21px;
+    font-weight: bold;
+    padding-top: 10px;
+}
+
+.students_data .info p {
+    color: #f5f1f1;
+    font-size: 17px;
+}
+
+.students_data .info h2 {
+    font-weight: bold;
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+.students_data .info button {
+    background-color: #FDD51B;
+    color: #016585;
+    min-width: 100px;
+    height: 35px;
+    margin-bottom: 10px;
+}
+.students_data .info .no-balance{
+    cursor: not-allowed;
+}
+/******** end student data *******/

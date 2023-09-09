@@ -3,11 +3,12 @@
 if (isset($_POST['product_id'])) {
     $product_id = $_POST['product_id'];
     $price = $_POST['price'];
-    $stmt = $connect->prepare("INSERT INTO auction_page (product_id,last_price)
-    VALUES (:zproduct_id,:zlast_price)");
+    $stmt = $connect->prepare("INSERT INTO auction_page (product_id,last_price,date)
+    VALUES (:zproduct_id,:zlast_price,:zdate)");
     $stmt->execute(array(
         "zproduct_id" => $product_id,
         "zlast_price" => $price,
+        "zdate" => date("Y-m-d")
     ));
     if ($stmt) {
         header('Location:main?dir=auction_page&page=report');
@@ -33,6 +34,7 @@ $product_image = "products/images/" . $product_data['image'];
 ?>
 <!-- DOM/Jquery table start -->
 <section class="content">
+
     <div class="container-fluid">
         <div class="product_action">
             <div class="product_data">
@@ -58,7 +60,6 @@ $product_image = "products/images/" . $product_data['image'];
                 $last_action_step_data = $stmt->fetch();
                 $count = $stmt->rowCount();
                 if ($count > 0) {
-
                     $student_owner = $last_action_step_data['student_id'];
                     /////////////  get the studen data  ///////////// 
                     $stmt = $connect->prepare("SELECT * FROM students WHERE id = ?");
@@ -78,6 +79,38 @@ $product_image = "products/images/" . $product_data['image'];
                 ?>
             </div>
         </div>
+        <div class="card">
+            <div class="d-flex justify-content-between" style="padding: 25px;">
+                <form action="" method="post">
+                    <input type="hidden" name="action_id" value="<?php echo $action_id; ?>">
+                    <input type="hidden" name="student_owner" value="<?php echo $student_owner; ?>">
+                    <button class="btn btn-primary btn-sm" name="end_auction"> انهاء المزاد <i class="fa fa-check"></i> </button>
+                </form>
+                <form action="" method="post">
+                    <button name="cancel_action" class="btn btn-danger btn-sm"> الغاء المزاد <i class="fa fa-exclamation"></i> </button>
+                </form>
+            </div>
+        </div>
+
+        <?php
+        if (isset($_POST['cancel_action'])) {
+            $action_id = $action_id;
+            $stmt = $connect->prepare("DELETE FROM auction_page WHERE id = ?");
+            $stmt->execute(array($action_id));
+            header("Location:main?dir=products&page=report");
+        }
+
+        ?>
+        <?php
+        if (isset($_POST['end_auction'])) {
+            $action_id = $action_id;
+            $student_owner = $student_owner;
+            $stmt = $connect->prepare("UPDATE auction_page SET student_win = ? WHERE id = ?");
+            $stmt->execute(array($student_owner, $action_id));
+            header("Location:main?dir=products&page=report");
+        }
+
+        ?>
         <div class="row">
             <div class="col-12">
                 <div class="card">
@@ -116,56 +149,42 @@ $product_image = "products/images/" . $product_data['image'];
                     }
                     ?>
                     <div class="card-body">
-                        <div class="table-responsive">
-                            <table id="table" class="table table-striped table-bordered">
-                                <thead>
-                                    <tr>
-                                        <th> # </th>
-                                        <th> اسم الطالب </th>
-                                        <th> المرحلة </th>
-                                        <th> رقم الكارت </th>
-                                        <th> الرصيد </th>
-                                        <th> </th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php
-                                    $stmt = $connect->prepare("SELECT * FROM students   ORDER BY id DESC");
-                                    $stmt->execute();
-                                    $allstudents = $stmt->fetchAll();
-                                    $i = 0;
-                                    foreach ($allstudents as $student) {
-                                        $i++;
-                                    ?>
-                                        <tr>
-                                            <td> <?php echo $i; ?> </td>
-                                            <td> <?php echo $student['name']; ?> </td>
-                                            <td> <?php echo $student['stage']; ?> </td>
-                                            <td> <?php echo $student['card_number']; ?> </td>
-                                            <td>
-                                                <input type="text" disabled class="form-control new_balance_element" data-id="<?php echo $student['id']; ?>" value="<?php echo $student['balance']; ?>">
-                                            </td>
-                                            <td>
-                                                <?php
-                                                if ($student['balance'] >= $last_price_after_step) {
-                                                ?>
-                                                    <form action="" method="post" enctype="multipart/form-data">
-                                                        <input type="hidden" name="student_id" value="<?php echo $student['id']; ?>">
-                                                        <button type="submit" name="action_step" class="btn btn-primary btn-sm"> مزايدة </button>
-                                                    </form>
-                                                <?php
-                                                }
-                                                ?>
-                                            </td>
-                                        </tr>
-                                    <?php
-                                    }
-                                    ?>
-                            </table>
+                        <div class="students_data">
+                            <div class="row">
+                                <?php
+                                $stmt = $connect->prepare("SELECT * FROM students ORDER BY name ASC");
+                                $stmt->execute();
+                                $allstudents = $stmt->fetchAll();
+                                foreach ($allstudents as $student) {
+                                ?>
+                                    <div class="col-lg-3">
+                                        <div class="info">
+                                            <h3> <?php echo $student['name']; ?> </h3>
+                                            <p> <?php echo $student['stage']; ?> </p>
+                                            <h2> <?php echo $student['balance']; ?> </h2>
+                                            <?php
+                                            if ($student['balance'] >= $last_price_after_step) {
+                                            ?>
+                                                <form action="" method="post" enctype="multipart/form-data">
+                                                    <input type="hidden" name="student_id" value="<?php echo $student['id']; ?>">
+                                                    <button type="submit" name="action_step" class="btn"> مزايدة </button>
+                                                </form>
+                                            <?php
+                                            } else {
+                                            ?>
+                                                <button class="btn no-balance"> رصيد غير كافي </button>
+                                            <?php
+                                            }
+                                            ?>
+                                        </div>
+                                    </div>
+                                <?php
+                                }
+                                ?>
+                            </div>
                         </div>
                     </div>
                 </div>
-
             </div>
             <!-- /.col -->
         </div>

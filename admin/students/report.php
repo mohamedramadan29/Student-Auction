@@ -139,7 +139,7 @@ if (isset($_POST['add_balance'])) {
                                                 <td> <a href="#" class="btn btn-primary btn-sm"> منتجات الطالب </a>
                                                     <!-- get the products number student win -->
                                                     <?php
-                                                    $stmt = $connect->prepare("SELECT * FROM products WHERE win_student = ?");
+                                                    $stmt = $connect->prepare("SELECT * FROM auction_page WHERE student_win = ?");
                                                     $stmt->execute(array($student['id']));
                                                     $product_sum = count($stmt->fetchAll());
                                                     ?>
