@@ -12,15 +12,15 @@
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
       <!-- Brand Logo -->
       <a href="main.php?dir=dashboard&page=dashboard" class="brand-link">
-        <span class="brand-text font-weight-light"> فري </span>
-        <img src="uploads/shabasa_logo.png" alt="AdminLTE Logo" class="brand-image elevation-3" style="box-shadow: none;">
+        <span class="brand-text font-weight-light"> ثري </span>
+        <img src="uploads/bank.png" alt="AdminLTE Logo" class="brand-image elevation-3" style="box-shadow: none;">
       </a>
       <!-- Sidebar -->
       <div class="sidebar">
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
           <div class="image">
-            <img src="uploads/shabasa_logo.png" class="img-circle elevation-2" alt="User Image">
+            
           </div>
           <div class="info">
             <a href="#" class="d-block"> <?php /* echo  $_SESSION['admin_username']; */ ?> الأدمن </a>

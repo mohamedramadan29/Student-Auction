@@ -24,7 +24,7 @@ include "init.php";
                     </a>
                 </div>
                 <div class="col-lg-12">
-                    <a href="products">
+                    <a href="auction_page">
                         <div class="info programme">
                             <img src="images/programme.png" alt="">
                         </div>
