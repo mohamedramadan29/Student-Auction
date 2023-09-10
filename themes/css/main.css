@@ -1,6 +1,5 @@
 body {
   font-family: 'Cairo', sans-serif;
-  background-color: #f9f9f9;
 }
 
 * {
@@ -2550,17 +2549,6 @@ input.num-product::-webkit-inner-spin-button {
   background-color: transparent;
 }
 
-.bg0 {
-  background-color: #f9f9f9;
-}
-
-.bg1 {
-  background-color: var(--main_color);
-}
-
-.bg2 {
-  background-color: #e6e6e6;
-}
 
 .bg3 {
   background-color: #222;
@@ -3770,7 +3758,6 @@ footer .stext-107 {
 
 .block2 {
   background-color: #fff;
-  box-shadow: 0px 0px 10px 2px #e5e5e5;
   border-radius: 10px;
 }
 
@@ -3791,25 +3778,43 @@ footer .stext-107 {
 }
 
 /******** START BALANCE PAGE ******/
+.bank_body {
+  background-color: #005876;
+}
 
 .balance_account {
   padding: 40px;
+  background-color: #005876;
 }
 
 .balance_account .data {
   background-color: #fff;
   padding: 40px;
   border-radius: 10px;
-  box-shadow: 0px 0px 10px 2px #efe9e9;
   max-width: 70%;
   margin: auto;
+}
+
+.balance_account .data .return_home {
+  text-decoration: none;
+  background-color: #F5B62E;
+  color: #fff;
+  min-width: 100px;
+}
+
+.balance_account .data img {
+  max-width: 220px;
+  text-align: center;
+  margin: auto;
+  display: block;
+  margin-bottom: 20px;
 }
 
 .balance_account .data h2 {
 
   font-weight: bold;
   font-size: 25px;
-  color: var(--main_color);
+  color: #005877;
   padding-bottom: 30px;
   text-align: center;
   margin: auto;
@@ -3820,7 +3825,7 @@ footer .stext-107 {
 .balance_account .data .box label {
   margin-bottom: 11px;
   color: #343333;
-  font-size: 17px;
+  font-size: 20px;
 }
 
 .balance_account .data .box input {
@@ -3833,8 +3838,8 @@ footer .stext-107 {
 }
 
 .balance_account .data .box button {
-  background-color: var(--main_color);
-  border-color: var(--main_color);
+  background-color: #005877;
+  border-color: #005877;
 }
 
 .balance_account .error_message {
@@ -3845,17 +3850,31 @@ footer .stext-107 {
 /************ END BALANCE PAGE **********/
 
 /******* start product_action *************/
+.action_body{
+  margin-top: 0;
+  background-color: #006F65;
+  padding-top: 30px;
+}
+.auction_page{
+  background-color: #006F65;
+  padding-bottom: 20px;
+}
 .product_action {
   background: #fff;
   padding: 20px;
   text-align: center;
-  border: 1px solid #ccc;
-  box-shadow: 0px 0px 6px 2px #edebeb;
-  margin-top: 15px;
-  margin-bottom: 15px;
+  border: 1px solid #ccc;  
   border-radius: 10px;
   padding-bottom: 50px;
   padding-top: 50px;
+  position: relative;
+}
+.product_action .return_home{
+  background-color: #006F65;
+  color: #fff;
+  position: absolute;
+  left: 22px;
+  top: 22px;
 }
 
 .product_action .product_data {
@@ -3910,6 +3929,10 @@ footer .stext-107 {
 }
 
 /* START HOME PAGE */
+.index_page {
+  background-color: #107A3A;
+}
+
 .home_page {}
 
 .home_page .data {
@@ -3917,13 +3940,18 @@ footer .stext-107 {
   display: flex;
   justify-content: center;
   align-items: center;
+}
 
+.home_page .action_now {
+  background-color: #fff;
+  color: #188540;
+  text-decoration: none;
+  margin: 20px;
 }
 
 .home_page .data .info {
   background-color: #fff;
   padding: 35px;
-  box-shadow: 0px 0px 10px 0px #ddd;
   border-radius: 10px;
   max-width: 300px;
   margin: auto !important;
@@ -3976,17 +4004,29 @@ footer .stext-107 {
 }
 
 /** START WAIT PAGE */
-.wait_page {}
+.wait_body{
+  background-color: #006F65;
+  padding-top: 50px;
+}
+.wait_page {
+
+}
 
 .wait_page .data {
   background-color: #fff;
   width: 50%;
-  margin: auto;
-  margin-top: 20px;
-  box-shadow: 0px 0px 10px 2px #f3f3f3;
+  margin: auto;  
   border-radius: 10px;
   text-align: center;
   padding: 15px;
+  margin-top: 40px;
+}
+
+.wait_page .data .return_home{
+  display: block;
+  max-width: 100px;
+  background-color: #006F65;
+  color: #fff;
 }
 
 .wait_page .data img {
@@ -4002,3 +4042,26 @@ footer .stext-107 {
 }
 
 /* END WAIT PAGE */
+/* START PRODUCTS***/
+.products {
+  background-color: #f9f9f9;
+
+  padding-bottom: 40px;
+}
+
+.products .products_head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+  padding-top: 10px;
+}
+
+.products .products_head img {
+  max-width: 150px;
+}
+.products .products_head .return_home{
+  background-color: #006F65;
+  color: #fff;
+}
+/*** END PRODUCTS ****/
