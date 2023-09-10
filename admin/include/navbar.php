@@ -20,7 +20,7 @@
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
           <div class="image">
-            
+
           </div>
           <div class="info">
             <a href="#" class="d-block"> <?php /* echo  $_SESSION['admin_username']; */ ?> الأدمن </a>
@@ -83,7 +83,15 @@
                 </li>
               </ul>
             </li>
+            <li class="nav-item">
+              <a href="main.php?dir=reports&page=report" class="nav-link">
+                <p>
+                  التقارير
+                  
+                </p>
+              </a>
 
+            </li>
             <li class="nav-item">
               <a href="logout" class="nav-link" style="color: #e74c3c;">
                 <p>

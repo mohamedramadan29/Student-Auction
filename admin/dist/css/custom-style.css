@@ -364,14 +364,14 @@ table.dataTable>thead>tr>td:not(.sorting_disabled) {
 }
 
 .students_data .info h3 {
-    font-size: 21px;
+    font-size: 15px;
     font-weight: bold;
     padding-top: 10px;
 }
 
 .students_data .info p {
     color: #f5f1f1;
-    font-size: 17px;
+    font-size: 15px;
 }
 
 .students_data .info h2 {
@@ -386,6 +386,7 @@ table.dataTable>thead>tr>td:not(.sorting_disabled) {
     min-width: 100px;
     height: 35px;
     margin-bottom: 10px;
+    font-size: 14px;
 }
 
 .students_data .info .no-balance {

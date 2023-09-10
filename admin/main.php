@@ -72,6 +72,10 @@ if (isset($_SESSION['admin_username'])) {
     } elseif ($dir == 'eduction_level' && $page == 'report') {
         include "eduction_level/report.php";
     }
+    // START Reports 
+    if ($dir == 'reports' && $page == 'report') {
+        include "reports/report.php";
+    }
     ?>
 
 </div>

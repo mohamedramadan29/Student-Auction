@@ -8,7 +8,7 @@ include "init.php";
 	<div class="container">
 		<div class="row">
 			<?php
-			$stmt = $connect->prepare("SELECT * FROM products WHERE status = 1");
+			$stmt = $connect->prepare("SELECT * FROM products");
 			$stmt->execute();
 			$allproducts = $stmt->fetchAll();
 			foreach ($allproducts as $product) {
@@ -24,14 +24,26 @@ include "init.php";
 								<a class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
 									<?php echo $product['name']; ?>
 								</a>
-								<p> تبدا المزايدة من : <span class="stext-105 cl3">
-										<?php echo $product['price_start_from']; ?> ريال
-									</span>
-								</p>
-								<p> المزايدة : <span class="stext-105 cl3">
-										<?php echo $product['step_price']; ?> ريال
-									</span>
-								</p>
+								<?php
+								if ($product['status'] == 0) {
+								?>
+									<p> تبدا المزايدة من : <span class="stext-105 cl3">
+											<?php echo $product['price_start_from']; ?> ريال
+										</span>
+									</p>
+									<p> المزايدة : <span class="stext-105 cl3">
+											<?php echo $product['step_price']; ?> ريال
+										</span>
+									</p>
+								<?php
+								}else{
+									?>
+									<p> تم بيع المنتج  </p>
+									<?php 
+								}
+
+								?>
+
 							</div>
 						</div>
 					</div>

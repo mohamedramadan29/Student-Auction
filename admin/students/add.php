@@ -36,9 +36,8 @@ if (isset($_POST['add_cat'])) {
             "zstudent_id" => $last_id,
             "zprice" => $balance,
             "zdate" => date("Y-m-d"),
-            "zreason" => " ايداع مكافاة مستحقة ",
+            "zreason" => " ايداع مكافاة  ",
         ));
-
         if ($stmt) {
             $_SESSION['success_message'] = " تمت الأضافة بنجاح  ";
             header('Location:main?dir=students&page=report');

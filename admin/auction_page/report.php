@@ -128,6 +128,9 @@ $product_image = "products/images/" . $product_data['image'];
                 "zreason" => "شراء منتج من المزاد",
                 "zproduct" => $last_product
             ));
+            // update product status 
+            $stmt = $connect->prepare("UPDATE products SET status = 1 WHERE id = ?");
+            $stmt->execute(array($last_product));
             header("Location:main?dir=products&page=report");
         }
 
@@ -178,7 +181,7 @@ $product_image = "products/images/" . $product_data['image'];
                                 $allstudents = $stmt->fetchAll();
                                 foreach ($allstudents as $student) {
                                 ?>
-                                    <div class="col-lg-3">
+                                    <div class="col-lg-2">
                                         <div class="info">
                                             <h3> <?php echo $student['name']; ?> </h3>
                                             <p> <?php echo $student['stage']; ?> </p>

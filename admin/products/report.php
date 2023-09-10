@@ -97,11 +97,22 @@
                                             <td> <?php echo $product['step_price']; ?> </td>
                                             <td> <img width="80px" src="products/images/<?php echo $product['image']; ?>" alt=""> </td>
                                             <td>
-                                                <form action="main?dir=auction_page&page=report" method="post">
-                                                    <input type="hidden" name="product_id" value="<?php echo $product['id'] ?>">
-                                                    <input type="hidden" name="price" value="<?php echo $product['price_start_from'] ?>">
-                                                    <button type="submit" class="btn btn-warning btn-sm"> زايد <i class="fa fa-eye"></i> </button>
-                                                </form>
+                                                <?php
+                                                if ($product['status'] == 0) {
+                                                ?>
+                                                    <form action="main?dir=auction_page&page=report" method="post">
+                                                        <input type="hidden" name="product_id" value="<?php echo $product['id'] ?>">
+                                                        <input type="hidden" name="price" value="<?php echo $product['price_start_from'] ?>">
+                                                        <button type="submit" class="btn btn-warning btn-sm"> زايد <i class="fa fa-eye"></i> </button>
+                                                    </form>
+                                                <?php
+                                                } else {
+                                                ?>
+                                                    <span class="badge badge-danger"> تمت المزايدة </span>
+                                                <?php
+                                                }
+                                                ?>
+
                                             </td>
                                             <td> <a href="main.php?dir=products&page=sales_products&product_id=<?php echo $product['id']; ?>" class="btn btn-primary btn-sm"> عمليات البيع </a>
                                                 <?php
@@ -111,7 +122,7 @@
                                                 ?>
                                                 <br>
                                                 <span class="badge badge-danger"> <?php echo $allwins; ?> </span>
-                                                
+
                                             </td>
                                             <td>
                                                 <button type="button" class="btn btn-success btn-sm waves-effect" data-toggle="modal" data-target="#edit-Modal_<?php echo $product['id']; ?>"> <i class='fa fa-pen'></i> </button>
@@ -140,14 +151,7 @@
                                                                 <label for="Company-2" class="block"> سعر المزايدة </label>
                                                                 <input required id="Company-2" name="step_price" type="number" class="form-control required" value="<?php echo  $product['step_price'] ?>">
                                                             </div>
-                                                            <div class="form-group">
-                                                                <label for="Company-2" class="block"> حالة المنتج </label>
-                                                                <select name="status" class="form-control select2" id="">
-                                                                    <option value=""> -- حالة المنتج -- </option>
-                                                                    <option <?php if ($product['status'] == 1) echo 'selected'; ?> value="1"> منشور </option>
-                                                                    <option <?php if ($product['status'] == 0) echo 'selected'; ?> value="0"> ارشيف </option>
-                                                                </select>
-                                                            </div>
+                                                            
                                                             <div class="form-group">
                                                                 <label for="Company-2" class="block"> تعديل صورة المنتج </label>
                                                                 <input id="Company-2" name="main_image" type="file" class="form-control required" accept="image/*">
