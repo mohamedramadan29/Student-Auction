@@ -43,55 +43,91 @@ include "init.php";
 					<a href="index" class="btn return_home"> الرئيسية <i class="fa fa-home"></i> </a>
 				</div>
 			</div>
-			<div class="row">
-				<?php
-				$stmt = $connect->prepare("SELECT * FROM products");
-				$stmt->execute();
-				$allproducts = $stmt->fetchAll();
-				foreach ($allproducts as $product) {
-				?>
-					<div class="col-sm-6 col-md-4 col-lg-3 p-b-35">
-						<!-- Block2 -->
-						<div class="block2">
-							<div class="block2-pic hov-img0">
-								<img src="admin/products/images/<?php echo $product['image']; ?>" alt="IMG-PRODUCT">
-							</div>
-							<div class="block2-txt flex-w flex-t p-t-14">
-								<div class="block2-txt-child1 flex-col-l ">
-									<a class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-										<?php echo $product['name']; ?>
-									</a>
-									<?php
-									if ($product['status'] == 0) {
-									?>
-										<p style="margin-bottom: 10px;"> تبدا المزايدة من : <span class="stext-105 cl3">
-												<?php echo $product['price_start_from']; ?> ريال
-											</span>
-										</p>
-										<p> المزايدة : <span class="stext-105 cl3">
-												<?php echo $product['step_price']; ?> ريال
-											</span>
-										</p>
-									<?php
-									} else {
-									?>
-										<p style="color: #006F65;font-weight: bold;margin-top: 10px;"> تم بيع المنتج </p>
-									<?php
-									}
+			<div class="all_new_products">
+				<div class="row">
+					<?php
 
-									?>
+					$stmt = $connect->prepare("SELECT * FROM products");
+					$stmt->execute();
+					$num_products = $stmt->rowCount();
+					$currentpage = isset($_GET['page']) ? $_GET['page'] : 1;
+					$pageSize = 8;
+					$offset = ($currentpage - 1) * $pageSize;
 
+					$stmt = $connect->prepare("SELECT * FROM products ORDER BY id DESC LIMIT $pageSize OFFSET :offset");
+					$stmt->bindParam(':offset', $offset, PDO::PARAM_INT);
+					$stmt->execute();
+					$allproducts = $stmt->fetchAll();
+					$totalProducts = count($allproducts);
+					$totalPages = ceil($num_products / $pageSize);
+					foreach ($allproducts as $product) {
+					?>
+						<div class="col-6 col-md-4 col-lg-3 p-b-35">
+							<!-- Block2 -->
+							<div class="block2">
+								<div class="block2-pic hov-img0">
+									<img src="admin/products/images/<?php echo $product['image']; ?>" alt="IMG-PRODUCT">
+								</div>
+								<div class="block2-txt flex-w flex-t p-t-14">
+									<div class="block2-txt-child1 flex-col-l ">
+										<a class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+											<?php echo $product['name']; ?>
+										</a>
+										<?php
+										if ($product['status'] == 0) {
+										?>
+											<p style="margin-bottom: 10px;"> تبدا المزايدة من : <span class="stext-105 cl3">
+													<?php echo $product['price_start_from']; ?> ريال
+												</span>
+											</p>
+											<p> المزايدة : <span class="stext-105 cl3">
+													<?php echo $product['step_price']; ?> ريال
+												</span>
+											</p>
+										<?php
+										} else {
+										?>
+											<p style="color: #006F65;font-weight: bold;margin-top: 10px;"> تم بيع المنتج </p>
+										<?php
+										}
+
+										?>
+
+									</div>
 								</div>
 							</div>
 						</div>
+					<?php
+					}
+
+					?>
+					<div class="pagination_section">
+						<nav aria-label="Page navigation example">
+							<ul class="pagination">
+								<li class="page-item">
+									<a class="page-link" href="" aria-label="Previous">
+										<span aria-hidden="true">&laquo;</span>
+									</a>
+								</li>
+								<?php
+								for ($i = 1; $i <= $totalPages; $i++) {
+									echo '<li class="page-item';
+									if ($i == $currentpage) {
+										echo ' active';
+									}
+									echo '"><a class="page-link" href="?page=' . $i . '">' . $i . '</a></li>';
+								}
+								?>
+								<li class="page-item">
+									<a class="page-link" href="" aria-label="Next">
+										<span aria-hidden="true">&raquo;</span>
+									</a>
+								</li>
+							</ul>
+						</nav>
 					</div>
-				<?php
-				}
-
-				?>
-
+				</div>
 			</div>
-
 		</div>
 	</div>
 

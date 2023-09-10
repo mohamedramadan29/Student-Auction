@@ -105,6 +105,7 @@
                                         <td> المجموع بعد البيع </td>
                                         <th colspan="2"> <?php echo $last_price; ?> </th>
                                     </tr>
+
                                 </tfoot>
                             </table>
                         </div>
@@ -152,6 +153,19 @@
                                     <tr style="background-color: #3498db; color:#fff">
                                         <td> مجموع عدد الطلاب </td>
                                         <th> <?php echo $all_student; ?> </th>
+                                    </tr>
+                                    <tr style="background-color: #3498db; color:#fff">
+                                        <?php
+                                        $stmt = $connect->prepare("SELECT * FROM students");
+                                        $stmt->execute();
+                                        $allstudents = $stmt->fetchAll();
+                                        $allbalance = 0;
+                                        foreach ($allstudents as $student) {
+                                            $allbalance = $allbalance + $student['balance'];
+                                        }
+                                        ?>
+                                        <td> مجموع ارصدة الطلاب </td>
+                                        <th colspan="2"> <?php echo $allbalance; ?> </th>
                                     </tr>
                                 </tfoot>
                             </table>

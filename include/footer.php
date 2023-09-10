@@ -1,8 +1,5 @@
 <!-- Footer -->
-<!-- Whats App button -->
-<div class="whatsapp_bottom">
-	<a href="https://wa.me/+9720503088409"> تواصل معنا <i class="fa fa-whatsapp"></i> </a>
-</div>
+ 
 <!--  Whats App Button  -->
 <footer class="bg3 p-b-10" style="display:none">
 	<div class="container">

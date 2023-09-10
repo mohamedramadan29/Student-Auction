@@ -62,6 +62,11 @@ if (isset($_POST['add_balance'])) {
     if (count($balance_amounts) === count($students_id)) {
         for ($i = 0; $i < count($balance_amounts); $i++) {
             $balance_amount = $balance_amounts[$i];
+            if ($balance_amount > 0) {
+                $text_add = "ايداع رصيد ";
+            } else {
+                $text_add = "خصم رصيد راجع البنك";
+            }
             $student_id = $students_id[$i];
             if (!empty($balance_amount)) {
                 $stmt = $connect->prepare("INSERT INTO student_accounts(student_id, price, date,reason)
@@ -70,7 +75,7 @@ if (isset($_POST['add_balance'])) {
                     "zstudent_id" => $student_id,
                     "zprice" => $balance_amount,
                     "zdate" => date("Y-m-d"),
-                    "zreason" => "شحن رصيد",
+                    "zreason" => $text_add,
                 ));
                 if ($stmt) {
                     $stmt = $connect->prepare("SELECT * FROM students WHERE id=?");

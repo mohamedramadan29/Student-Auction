@@ -36,7 +36,7 @@ if (isset($_POST['add_cat'])) {
             "zstudent_id" => $last_id,
             "zprice" => $balance,
             "zdate" => date("Y-m-d"),
-            "zreason" => " ايداع مكافاة  ",
+            "zreason" => " ايداع رصيد  ",
         ));
         if ($stmt) {
             $_SESSION['success_message'] = " تمت الأضافة بنجاح  ";

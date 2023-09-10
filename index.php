@@ -35,7 +35,14 @@ include "init.php";
 
     <div class="home_page">
         <div class="container">
-            <a href="auction_page" class="btn action_now"> مباشر المزاد الان <i class="fa fa-arrow-left"></i> </a>
+            <div class="index_header">
+                <div>
+                    <img src="images/programme.png" alt="">
+                </div>
+                <div>
+                    <a href="auction_page" class="btn action_now"> مباشر المزاد الان <i class="fa fa-arrow-left"></i> </a>
+                </div>
+            </div>
             <div class="data">
                 <div class="row">
                     <div class="col-lg-6">
