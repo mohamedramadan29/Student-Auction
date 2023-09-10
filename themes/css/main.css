@@ -3811,7 +3811,17 @@ footer .stext-107 {
   color: #fff;
   min-width: 100px;
 }
-
+@media (max-width:991px) {
+  .balance_account{
+    padding: 10px;
+  }
+  .balance_account .data{
+    max-width: 100%;
+  }
+  .balance_account .data .return_home{
+    margin-bottom: 30px;
+  }
+}
 .balance_account .data img {
   max-width: 220px;
   text-align: center;
@@ -3939,6 +3949,21 @@ footer .stext-107 {
 
 .product_action table tr th {
   padding: 15px;
+}
+@media (max-width:991px) {
+  .product_action .return_home{
+    left: auto;
+    right: 22px;
+  }
+  .product_action .product_data{
+    flex-direction: column;
+  }
+  .product_action img{
+    margin-top: 30px;
+  }
+  .product_action .price_now {
+    max-width: 100%;
+  }
 }
 
 /* START HOME PAGE */
