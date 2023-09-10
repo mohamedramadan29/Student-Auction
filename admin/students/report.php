@@ -1,3 +1,9 @@
+<style>
+    .new_table tr:last-of-type{
+        display: none;
+    }
+</style>
+
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <div class="container-fluid">
@@ -53,50 +59,6 @@ if (isset($_SESSION['success_message'])) {
     unset($_SESSION['error_messages']);
 }
 ?>
-<?php
-/********************** ADD NEW BALANCE TO STUDENT */ //////
-if (isset($_POST['add_balance'])) {
-    $balance_amounts = $_POST['balance_amounts'];
-    $students_id = $_POST['students_id'];
-    // Make sure both arrays have the same number of elements
-    if (count($balance_amounts) === count($students_id)) {
-        for ($i = 0; $i < count($balance_amounts); $i++) {
-            $balance_amount = $balance_amounts[$i];
-            if ($balance_amount > 0) {
-                $text_add = "ايداع رصيد ";
-            } else {
-                $text_add = "خصم رصيد راجع البنك";
-            }
-            $student_id = $students_id[$i];
-            if (!empty($balance_amount)) {
-                $stmt = $connect->prepare("INSERT INTO student_accounts(student_id, price, date,reason)
-                                VALUES(:zstudent_id,:zprice,:zdate,:zreason)");
-                $stmt->execute(array(
-                    "zstudent_id" => $student_id,
-                    "zprice" => $balance_amount,
-                    "zdate" => date("Y-m-d"),
-                    "zreason" => $text_add,
-                ));
-                if ($stmt) {
-                    $stmt = $connect->prepare("SELECT * FROM students WHERE id=?");
-                    $stmt->execute(array($student_id));
-                    $student_data = $stmt->fetch();
-                    $old_balance = $student_data['balance'];
-                    $new_balance = $old_balance + $balance_amount;
-                    $stmt = $connect->prepare("UPDATE students SET balance = ? WHERE id = ?");
-                    $stmt->execute(array($new_balance, $student_id));
-                }
-                if ($stmt) {
-                    $_SESSION['success_message'] = "تم التعديل بنجاح ";
-                    header('Location:main?dir=students&page=report');
-                }
-            }
-        }
-    } else {
-        echo "The number of balance amounts does not match the number of student IDs.";
-    }
-}
-?>
 <!-- DOM/Jquery table start -->
 <section class="content">
     <div class="container-fluid">
@@ -106,11 +68,11 @@ if (isset($_POST['add_balance'])) {
                     <div class="card">
                         <div class="card-header ">
                             <button style="margin-left: 20px;" type="button" class="btn btn-primary waves-effect btn-sm" data-toggle="modal" data-target="#add-Modal"> أضافة طالب جديد <i class="fa fa-plus"></i> </button>
-                            <button name="add_balance" class="btn btn-danger btn-sm"> اضافة رصيد للكل <i class="fa fa-paypal"></i> </button>
+                            <button type="submit" name="add_balance" class="btn btn-danger btn-sm"> اضافة رصيد للكل <i class="fa fa-paypal"></i> </button>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table id="my_table2" class="table table-striped table-bordered">
+                                <table id="my_table2" class="table table-striped table-bordered new_table">
                                     <thead>
                                         <tr>
                                             <th> # </th>
@@ -277,3 +239,49 @@ if (isset($_POST['add_balance'])) {
     </div>
     <!-- /.container-fluid -->
 </section>
+
+
+<?php
+/********************** ADD NEW BALANCE TO STUDENT */ //////
+if (isset($_POST['add_balance'])) {
+    $balance_amounts = $_POST['balance_amounts'];
+    $students_id = $_POST['students_id'];
+    // Make sure both arrays have the same number of elements
+    if (count($balance_amounts) === count($students_id)) {
+        for ($i = 0; $i < count($balance_amounts); $i++) {
+            $balance_amount = $balance_amounts[$i];
+            if ($balance_amount > 0) {
+                $text_add = "ايداع رصيد ";
+            } else {
+                $text_add = "خصم رصيد راجع البنك";
+            }
+            $student_id = $students_id[$i];
+            if (!empty($balance_amount)) {
+                $stmt = $connect->prepare("INSERT INTO student_accounts(student_id, price, date,reason)
+                                VALUES(:zstudent_id,:zprice,:zdate,:zreason)");
+                $stmt->execute(array(
+                    "zstudent_id" => $student_id,
+                    "zprice" => $balance_amount,
+                    "zdate" => date("Y-m-d"),
+                    "zreason" => $text_add,
+                ));
+                if ($stmt) {
+                    $stmt = $connect->prepare("SELECT * FROM students WHERE id=?");
+                    $stmt->execute(array($student_id));
+                    $student_data = $stmt->fetch();
+                    $old_balance = $student_data['balance'];
+                    $new_balance = $old_balance + $balance_amount;
+                    $stmt = $connect->prepare("UPDATE students SET balance = ? WHERE id = ?");
+                    $stmt->execute(array($new_balance, $student_id));
+                }
+                if ($stmt) {
+                    $_SESSION['success_message'] = "تم التعديل بنجاح ";
+                    header('Location:main?dir=students&page=report');
+                }
+            }
+        }
+    } else {
+        echo "The number of balance amounts does not match the number of student IDs.";
+    }
+}
+?>

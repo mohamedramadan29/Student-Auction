@@ -41,11 +41,16 @@ include "init.php";
                 $stmt = $connect->prepare("SELECT * FROM auction_page ORDER BY id DESC LIMIT 1");
                 $stmt->execute();
                 $action_data = $stmt->fetch();
+                $count_action = $stmt->rowCount();
                 $last_product = $action_data['product_id'];
                 $last_price = $action_data['last_price'];
                 $action_id = $action_data['id'];
                 $last_studdent_win  = $action_data['student_win'];
                 if ($last_studdent_win != null) {
+                    header("Location:wait_page");
+                }
+                if ($count_action > 0) {
+                } else {
                     header("Location:wait_page");
                 }
                 ////

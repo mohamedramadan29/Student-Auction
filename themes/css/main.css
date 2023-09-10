@@ -4091,7 +4091,14 @@ footer .stext-107 {
   font-weight: bold;
   line-height: 2;
 }
-
+@media (max-width:991px){
+  .wait_page .data {
+    width: 100%;
+  }
+  .wait_page .data img{
+    margin-top: 30px;
+  }
+}
 /* END WAIT PAGE */
 /* START PRODUCTS***/
 .products {

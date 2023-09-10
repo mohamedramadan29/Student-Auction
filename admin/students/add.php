@@ -23,22 +23,23 @@ if (isset($_POST['add_cat'])) {
             "zcard_number" => $card_number,
             "zbalance" => $balance,
         ));
-        // insert data into student accounts 
-        // get the last student first 
-        $stmt = $connect->prepare("SELECT * FROM students ORDER BY id DESC LIMIT 1 ");
-        $stmt->execute();
-        $last_student = $stmt->fetch();
-        $last_id = $last_student['id'];
-        $stmt = $connect->prepare("INSERT INTO student_accounts (student_id,price,date,reason)
+        if ($stmt) {
+            // insert data into student accounts 
+            // get the last student first 
+            $stmt = $connect->prepare("SELECT * FROM students ORDER BY id DESC LIMIT 1 ");
+            $stmt->execute();
+            $last_student = $stmt->fetch();
+            $last_id = $last_student['id'];
+            $balance = $last_student['balance'];
+            $stmt = $connect->prepare("INSERT INTO student_accounts (student_id,price,date,reason)
         VALUES(:zstudent_id,:zprice,:zdate,:zreason)
         ");
-        $stmt->execute(array(
-            "zstudent_id" => $last_id,
-            "zprice" => $balance,
-            "zdate" => date("Y-m-d"),
-            "zreason" => " ايداع رصيد  ",
-        ));
-        if ($stmt) {
+            $stmt->execute(array(
+                "zstudent_id" => $last_id,
+                "zprice" => $balance,
+                "zdate" => date("Y-m-d"),
+                "zreason" => " ايداع رصيد  ",
+            ));
             $_SESSION['success_message'] = " تمت الأضافة بنجاح  ";
             header('Location:main?dir=students&page=report');
         }
