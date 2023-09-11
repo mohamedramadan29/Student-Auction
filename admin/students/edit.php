@@ -7,7 +7,7 @@ if (isset($_POST['edit_cat'])) {
     $balance = $_POST['balance'];
     $status = $_POST['status'];
     $formerror = [];
-    if (empty($name) || empty($stage) || empty($card_number) || empty($balance)) {
+    if (empty($name) || empty($stage) || empty($card_number)) {
         $formerror[] = '  من فضلك ادخل المعلومات كاملة  ';
     } 
  

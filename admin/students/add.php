@@ -5,7 +5,7 @@ if (isset($_POST['add_cat'])) {
     $card_number  = $_POST['card_number'];
     $balance = $_POST['balance'];
     $formerror = [];
-    if (empty($name) || empty($stage) || empty($card_number) || empty($balance)) {
+    if (empty($name) || empty($stage) || empty($card_number)) {
         $formerror[] = '  من فضلك ادخل المعلومات كاملة  ';
     }
     $stmt = $connect->prepare("SELECT * FROM students WHERE card_number = ?");
@@ -31,15 +31,18 @@ if (isset($_POST['add_cat'])) {
             $last_student = $stmt->fetch();
             $last_id = $last_student['id'];
             $balance = $last_student['balance'];
-            $stmt = $connect->prepare("INSERT INTO student_accounts (student_id,price,date,reason)
-        VALUES(:zstudent_id,:zprice,:zdate,:zreason)
-        ");
-            $stmt->execute(array(
-                "zstudent_id" => $last_id,
-                "zprice" => $balance,
-                "zdate" => date("Y-m-d"),
-                "zreason" => " ايداع رصيد  ",
-            ));
+            if ($balance != '' && $balance != 0) {
+                $stmt = $connect->prepare("INSERT INTO student_accounts (student_id,price,date,reason)
+                VALUES(:zstudent_id,:zprice,:zdate,:zreason)
+                ");
+                $stmt->execute(array(
+                    "zstudent_id" => $last_id,
+                    "zprice" => $balance,
+                    "zdate" => date("Y-m-d"),
+                    "zreason" => " ايداع رصيد  ",
+                ));
+            }
+
             $_SESSION['success_message'] = " تمت الأضافة بنجاح  ";
             header('Location:main?dir=students&page=report');
         }

@@ -43,7 +43,8 @@ include "init.php";
                 <form action="" method="post" enctype="multipart/form-data">
                     <div class="box">
                         <label for=""> ادخل رقم الحساب الخاص بك </label>
-                        <input required type="number" class="form-control" name="account_number" value="<?php if (isset($_REQUEST['account_number'])) echo $_REQUEST['account_number']; ?>">
+                        <input required type="text" class="form-control" name="account_number" pattern="[0-9]*" oninput="this.value = this.value.replace(/[^0-9]/g, '');" value="<?php if (isset($_REQUEST['account_number'])) echo $_REQUEST['account_number']; ?>">
+
                     </div>
                     <div class="box">
                         <button name="show_balance" type="submit" class="btn btn-primary"> كشف الحساب <i class="fa fa-eye"></i> </button>

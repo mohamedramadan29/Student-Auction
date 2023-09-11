@@ -1,5 +1,5 @@
 <style>
-    .new_table tr:last-of-type{
+    .new_table tr:last-of-type {
         display: none;
     }
 </style>
@@ -159,7 +159,7 @@ if (isset($_SESSION['success_message'])) {
                                     </div>
                                     <div class="form-group">
                                         <label for="Company-2" class="block"> الرصيد </label>
-                                        <input required id="Company-2" name="balance" type="number" class="form-control required" value="<?php echo  $student['balance'] ?>">
+                                        <input pattern="[0-9]*" oninput="this.value = this.value.replace(/[^0-9]/g, '');" required id="Company-2" name="balance" type="text" class="form-control required" value="<?php echo  $student['balance'] ?>">
                                     </div>
                                     <div class="form-group">
                                         <label for="Company-2" class="block"> حالة الطالب </label>
@@ -217,11 +217,11 @@ if (isset($_SESSION['success_message'])) {
                         </div>
                         <div class="form-group">
                             <label for="Company-2" class="block"> رقم البطاقة </label>
-                            <input required id="Company-2" name="card_number" type="number" class="form-control required">
+                            <input pattern="[0-9]*" oninput="this.value = this.value.replace(/[^0-9]/g, '');" required id="Company-2" name="card_number" type="text" class="form-control required">
                         </div>
                         <div class="form-group">
                             <label for="Company-2" class="block"> الرصيد </label>
-                            <input required id="Company-2" name="balance" type="number" class="form-control required">
+                            <input pattern="[0-9]*" oninput="this.value = this.value.replace(/[^0-9]/g, '');" required id="Company-2" name="balance" type="text" class="form-control required">
                         </div>
                     </div>
                     <div class="modal-footer">
