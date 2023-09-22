@@ -122,6 +122,93 @@
                             <table id="" class="table table-striped table-bordered">
                                 <thead>
                                     <tr>
+                                        <th> عدد الدخول لمعرفة الرصيد </th>
+                                        <th> عدد الدخول لصفحة المنتجات </th>
+                                        <th> عدد الدخول لصفحة مباشر المزاد </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                    $stmt = $connect->prepare("SELECT * FROM event_show_balance");
+                                    $stmt->execute();
+                                    $allclick = $stmt->fetchAll();
+                                    $count_login_click = count($allclick);
+                                    ?>
+                                    <tr>
+                                        <td> <span class="badge badge-danger"> <?php echo $count_login_click; ?> </span>
+                                            <br>
+                                            <form action="" method="post">
+                                                <button class="btn btn-primary btn-sm" name="new_count_login"> اعادة العدد من جديد </button>
+                                            </form>
+                                            <?php
+                                            if (isset($_POST['new_count_login'])) {
+                                                $stmt = $connect->prepare("DELETE FROM event_show_balance");
+                                                $stmt->execute();
+                                                if ($stmt) {
+                                                    header("Location:main.php?dir=reports&page=report");
+                                                }
+                                            }
+                                            ?>
+                                        </td>
+                                        <?php
+                                        $stmt = $connect->prepare("SELECT * FROM products_view");
+                                        $stmt->execute();
+                                        $allproductclick = $stmt->fetchAll();
+                                        $count_product_click = count($allproductclick);
+                                        ?>
+
+                                        <td> <span class="badge badge-danger"> <?php echo $count_product_click; ?> </span>
+                                            <br>
+                                            <form action="" method="post">
+                                                <button class="btn btn-primary btn-sm" name="new_count_product"> اعادة العدد من جديد </button>
+                                            </form>
+                                            <?php
+                                            if (isset($_POST['new_count_product'])) {
+                                                $stmt = $connect->prepare("DELETE FROM products_view");
+                                                $stmt->execute();
+                                                if ($stmt) {
+                                                    header("Location:main.php?dir=reports&page=report");
+                                                }
+                                            }
+                                            ?>
+                                        </td>
+                                        <?php
+                                        $stmt = $connect->prepare("SELECT * FROM auction_view");
+                                        $stmt->execute();
+                                        $allactionclick = $stmt->fetchAll();
+                                        $count_action_click = count($allactionclick);
+                                        ?>
+                                        <td> <span class="badge badge-danger"> <?php echo $count_action_click; ?> </span>
+                                            <br>
+                                            <form action="" method="post">
+                                                <button class="btn btn-primary btn-sm" name="new_count_action"> اعادة العدد من جديد </button>
+                                            </form>
+                                            <?php
+                                            if (isset($_POST['new_count_action'])) {
+                                                $stmt = $connect->prepare("DELETE FROM auction_view");
+                                                $stmt->execute();
+                                                if ($stmt) {
+                                                    header("Location:main.php?dir=reports&page=report");
+                                                }
+                                            }
+                                            ?>
+                                        </td>
+                                    </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.col -->
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table id="" class="table table-striped table-bordered">
+                                <thead>
+                                    <tr>
                                         <th> اسم المرحلة </th>
                                         <th> عدد الطلاب </th>
                                     </tr>

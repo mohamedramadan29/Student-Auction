@@ -44,10 +44,9 @@ include "init.php";
                     <div class="box">
                         <label for=""> ادخل رقم الحساب الخاص بك </label>
                         <input required type="text" class="form-control" name="account_number" pattern="[0-9]*" oninput="this.value = this.value.replace(/[^0-9]/g, '');" value="<?php if (isset($_REQUEST['account_number'])) echo $_REQUEST['account_number']; ?>">
-
                     </div>
                     <div class="box">
-                        <button name="show_balance" type="submit" class="btn btn-primary"> كشف الحساب <i class="fa fa-eye"></i> </button>
+                        <button id="show_balance" name="show_balance" type="submit" class="btn btn-primary"> كشف الحساب <i class="fa fa-eye"></i> </button>
                     </div>
                 </form>
                 <?php
@@ -108,6 +107,13 @@ include "init.php";
                                 </tbody>
                             </table>
                         <?php
+                            // insert into event show_balance
+                            $stmt = $connect->prepare("INSERT INTO event_show_balance (event)
+                        VALUES (:zevent)
+                        ");
+                            $stmt->execute(array(
+                                "zevent" => "معرفة الرصيد",
+                            ));
                         } else {
                         ?>
                             <p class="alert alert-danger error_message"> لا يوجد حساب بهذا الرقم </p>

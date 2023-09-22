@@ -3,6 +3,8 @@ if (isset($_POST['add_cat'])) {
     $name = $_POST['name'];
     $price_start_from = $_POST['price_start_from'];
     $step_price  = $_POST['step_price'];
+    $order_number = $_POST['order_number'];
+    $show_status = $_POST['show_status'];
     $formerror = [];
     if (empty($name) || empty($price_start_from) || empty($step_price)) {
         $formerror[] = '  من فضلك ادخل المعلومات كاملة  ';
@@ -33,13 +35,15 @@ if (isset($_POST['add_cat'])) {
         $formerror[] = ' المنتج موجود من قبل من فضلك ادخل منتج جديد  ';
     }
     if (empty($formerror)) {
-        $stmt = $connect->prepare("INSERT INTO products (name,image, price_start_from,step_price)
-        VALUES (:zname,:zimage,:zstart_from,:zstep_price)");
+        $stmt = $connect->prepare("INSERT INTO products (name,image, price_start_from,step_price,order_number,show_status)
+        VALUES (:zname,:zimage,:zstart_from,:zstep_price,:zorder_number,:zshow_status)");
         $stmt->execute(array(
             "zname" => $name,
             "zimage" => $main_image_uploaded,
             "zstart_from" => $price_start_from,
-            "zstep_price" => $step_price
+            "zstep_price" => $step_price,
+            "zorder_number" => $order_number,
+            "zshow_status" => $show_status,
         ));
         if ($stmt) {
             $_SESSION['success_message'] = " تمت الأضافة بنجاح  ";

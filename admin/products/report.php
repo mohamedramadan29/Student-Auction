@@ -151,10 +151,22 @@
                                                                 <label for="Company-2" class="block"> سعر المزايدة </label>
                                                                 <input required id="Company-2" name="step_price" type="number" class="form-control required" value="<?php echo  $product['step_price'] ?>">
                                                             </div>
-                                                            
+
                                                             <div class="form-group">
                                                                 <label for="Company-2" class="block"> تعديل صورة المنتج </label>
                                                                 <input id="Company-2" name="main_image" type="file" class="form-control required" accept="image/*">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="Company-2" class="block"> تريب المنتج </label>
+                                                                <input required id="Company-2" name="order_number" type="number" class="form-control required" value="<?php echo  $product['order_number'] ?>">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="Company-2" class="block"> حالة المنتج </label>
+                                                                <select name="show_status" id="" class="form-control select2">
+                                                                    <option value=""> -- اختر الحالة -- </option>
+                                                                    <option <?php if ($product['show_status'] == 1) echo "selected"; ?> value="1"> مفعل </option>
+                                                                    <option <?php if ($product['show_status'] == 0) echo "selected"; ?> value="0"> غير مفعل </option>
+                                                                </select>
                                                             </div>
                                                         </div>
                                                         <div class="modal-footer">
@@ -172,7 +184,6 @@
                         </div>
                     </div>
                 </div>
-
                 <!-- ADD NEW CATEGORY MODAL   -->
                 <div class="modal fade" id="add-Modal" tabindex="-1" role="dialog">
                     <div class="modal-dialog" role="document">
@@ -197,6 +208,18 @@
                                     <div class="form-group">
                                         <label for="Company-2" class="block"> صورة المنتج </label>
                                         <input required id="Company-2" name="main_image" type="file" class="form-control required" accept="image/*">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="Company-2" class="block"> تريب المنتج </label>
+                                        <input required id="Company-2" name="order_number" type="number" class="form-control required">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="Company-2" class="block"> حالة المنتج </label>
+                                        <select name="show_status" id="" class="form-control select2">
+                                            <option value=""> -- اختر الحالة -- </option>
+                                            <option value="1"> مفعل </option>
+                                            <option value="0"> غير مفعل </option>
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="modal-footer">

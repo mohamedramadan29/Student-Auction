@@ -47,3 +47,16 @@ include "init.php";
     ob_end_flush();
 
     ?>
+
+<?php
+	$page_url = $_SERVER['REQUEST_URI']; // URL للصفحة الحالية
+	$ip_address = $_SERVER['REMOTE_ADDR']; // عنوان IP للزائر
+	$stmt = $connect->prepare("INSERT INTO auction_view (page_url,ip_address)
+	VALUES(:zpage_url,:zip_address)
+	");
+	$stmt->execute(array(
+		"zpage_url" => $page_url,
+		"zip_address" => $ip_address,
+	));
+    exit();
+	?>

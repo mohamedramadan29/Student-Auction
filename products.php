@@ -47,14 +47,14 @@ include "init.php";
 				<div class="row">
 					<?php
 
-					$stmt = $connect->prepare("SELECT * FROM products");
+					$stmt = $connect->prepare("SELECT * FROM products WHERE show_status = 1");
 					$stmt->execute();
 					$num_products = $stmt->rowCount();
 					$currentpage = isset($_GET['page']) ? $_GET['page'] : 1;
 					$pageSize = 8;
 					$offset = ($currentpage - 1) * $pageSize;
 
-					$stmt = $connect->prepare("SELECT * FROM products ORDER BY id DESC LIMIT $pageSize OFFSET :offset");
+					$stmt = $connect->prepare("SELECT * FROM products WHERE show_status = 1 ORDER BY order_number ASC LIMIT $pageSize OFFSET :offset");
 					$stmt->bindParam(':offset', $offset, PDO::PARAM_INT);
 					$stmt->execute();
 					$allproducts = $stmt->fetchAll();
@@ -87,7 +87,7 @@ include "init.php";
 										<?php
 										} else {
 										?>
-											<p style="color: #006F65;font-weight: bold;margin-top: 10px;"> تم بيع المنتج </p>
+											<p style="color: #fff;font-weight: bold;margin-top: 10px;"> تم بيع المنتج </p>
 										<?php
 										}
 
@@ -130,9 +130,18 @@ include "init.php";
 			</div>
 		</div>
 	</div>
-
 	<?php
 	include $tem . "footer.php";
 	ob_end_flush();
-
+	?>
+	<?php
+	$page_url = $_SERVER['REQUEST_URI']; // URL للصفحة الحالية
+	$ip_address = $_SERVER['REMOTE_ADDR']; // عنوان IP للزائر
+	$stmt = $connect->prepare("INSERT INTO products_view (page_url,ip_address)
+	VALUES(:zpage_url,:zip_address)
+	");
+	$stmt->execute(array(
+		"zpage_url" => $page_url,
+		"zip_address" => $ip_address,
+	));
 	?>

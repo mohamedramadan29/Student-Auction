@@ -3,7 +3,9 @@ if (isset($_POST['edit_cat'])) {
     $product_id = $_POST['product_id'];
     $name = $_POST['name'];
     $price_start_from = $_POST['price_start_from'];
-    $step_price  = $_POST['step_price']; 
+    $step_price  = $_POST['step_price'];
+    $order_number = $_POST['order_number'];
+    $show_status = $_POST['show_status'];
     $formerror = [];
     if (empty($name) || empty($price_start_from) || empty($step_price)) {
         $formerror[] = '  من فضلك ادخل المعلومات كاملة  ';
@@ -30,8 +32,8 @@ if (isset($_POST['edit_cat'])) {
         $formerror[] = ' المنتج موجود من قبل من فضلك ادخل منتج جديد  ';
     }
     if (empty($formerror)) {
-        $stmt = $connect->prepare("UPDATE products SET name=?,price_start_from=?,step_price=? WHERE id = ? ");
-        $stmt->execute(array($name, $price_start_from, $step_price, $product_id));
+        $stmt = $connect->prepare("UPDATE products SET name=?,price_start_from=?,step_price=?,order_number=?,show_status=? WHERE id = ? ");
+        $stmt->execute(array($name, $price_start_from, $step_price, $order_number, $show_status, $product_id));
         if (!empty($_FILES['main_image']['name'])) {
             $stmt = $connect->prepare("UPDATE products SET  image=?  WHERE id = ? ");
             $stmt->execute(array($main_image_uploaded, $product_id));
