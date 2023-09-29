@@ -25,6 +25,20 @@ if (isset($_POST['edit_cat'])) {
             'products/images/' . $main_image_uploaded
         );
     }
+    if (!empty($_FILES['main_image_phone']['name'])) {
+        $main_image_name_phone = $_FILES['main_image_phone']['name'];
+        $main_image_name_phone = str_replace(' ', '-', $main_image_name_phone);
+        $main_image_temp_phone = $_FILES['main_image_phone']['tmp_name'];
+        $main_image_type_phone = $_FILES['main_image_phone']['type'];
+        $main_image_size_phone = $_FILES['main_image_phone']['size'];
+        // حصل على امتداد الصورة من اسم الملف المرفوع
+        $image_extension_phone = pathinfo($main_image_name_phone, PATHINFO_EXTENSION);
+        $main_image_uploaded_phone = $main_image_name_phone . '.' . $image_extension_phone;
+        move_uploaded_file(
+            $main_image_temp_phone,
+            'products/phone_images/' . $main_image_uploaded_phone
+        );
+    }
     $stmt = $connect->prepare("SELECT * FROM products WHERE name = ? AND id !=?");
     $stmt->execute(array($name, $product_id));
     $count = $stmt->rowCount();
@@ -37,6 +51,10 @@ if (isset($_POST['edit_cat'])) {
         if (!empty($_FILES['main_image']['name'])) {
             $stmt = $connect->prepare("UPDATE products SET  image=?  WHERE id = ? ");
             $stmt->execute(array($main_image_uploaded, $product_id));
+        }
+        if (!empty($_FILES['main_image_phone']['name'])) {
+            $stmt = $connect->prepare("UPDATE products SET  image_phone=?  WHERE id = ? ");
+            $stmt->execute(array($main_image_uploaded_phone, $product_id));
         }
         if ($stmt) {
             $_SESSION['success_message'] = "تم التعديل بنجاح ";

@@ -27,6 +27,22 @@ if (isset($_POST['add_cat'])) {
         } else {
             $formerror[] = ' من فضلك ادخل صورة  المنتج   ';
         }
+        if (!empty($_FILES['main_image_phone']['name'])) {
+            $main_image_name_phone = $_FILES['main_image_phone']['name'];
+            $main_image_name_phone = str_replace(' ', '-', $main_image_name_phone);
+            $main_image_temp_phone = $_FILES['main_image_phone']['tmp_name'];
+            $main_image_type_phone = $_FILES['main_image_phone']['type'];
+            $main_image_size_phone = $_FILES['main_image_phone']['size'];
+            // حصل على امتداد الصورة من اسم الملف المرفوع
+            $image_extension_phone = pathinfo($main_image_name_phone, PATHINFO_EXTENSION);
+            $main_image_uploaded_phone = $main_image_name_phone . '.' . $image_extension_phone;
+            move_uploaded_file(
+                $main_image_temp_phone,
+                'products/phone_images/' . $main_image_uploaded_phone
+            );
+        } else {
+            $formerror[] = ' من فضلك ادخل صورة  المنتج   ';
+        }
     }
     $stmt = $connect->prepare("SELECT * FROM products WHERE name = ?");
     $stmt->execute(array($name));
@@ -35,11 +51,12 @@ if (isset($_POST['add_cat'])) {
         $formerror[] = ' المنتج موجود من قبل من فضلك ادخل منتج جديد  ';
     }
     if (empty($formerror)) {
-        $stmt = $connect->prepare("INSERT INTO products (name,image, price_start_from,step_price,order_number,show_status)
-        VALUES (:zname,:zimage,:zstart_from,:zstep_price,:zorder_number,:zshow_status)");
+        $stmt = $connect->prepare("INSERT INTO products (name,image,image_phone ,price_start_from,step_price,order_number,show_status)
+        VALUES (:zname,:zimage,:zimage_phone,:zstart_from,:zstep_price,:zorder_number,:zshow_status)");
         $stmt->execute(array(
             "zname" => $name,
             "zimage" => $main_image_uploaded,
+            "zimage_phone" => $main_image_uploaded_phone,
             "zstart_from" => $price_start_from,
             "zstep_price" => $step_price,
             "zorder_number" => $order_number,

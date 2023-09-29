@@ -76,6 +76,7 @@
                                         <th> يبدا من </th>
                                         <th> رقم المزايدة </th>
                                         <th> صورة المنتج </th>
+                                        <th> صورة الموبايل </th>
                                         <th> مزايدة </th>
                                         <th> عمليات البيع </th>
                                         <th> </th>
@@ -96,6 +97,7 @@
                                             <td> <?php echo $product['price_start_from']; ?> </td>
                                             <td> <?php echo $product['step_price']; ?> </td>
                                             <td> <img width="80px" src="products/images/<?php echo $product['image']; ?>" alt=""> </td>
+                                            <td> <img width="80px" src="products/phone_images/<?php echo $product['image_phone']; ?>" alt=""> </td>
                                             <td>
                                                 <?php
                                                 if ($product['status'] == 0) {
@@ -157,6 +159,10 @@
                                                                 <input id="Company-2" name="main_image" type="file" class="form-control required" accept="image/*">
                                                             </div>
                                                             <div class="form-group">
+                                                                <label for="Company-2" class="block"> تعديل صورة الموبايل </label>
+                                                                <input id="Company-2" name="main_image_phone" type="file" class="form-control required" accept="image/*">
+                                                            </div>
+                                                            <div class="form-group">
                                                                 <label for="Company-2" class="block"> تريب المنتج </label>
                                                                 <input required id="Company-2" name="order_number" type="number" class="form-control required" value="<?php echo  $product['order_number'] ?>">
                                                             </div>
@@ -208,6 +214,10 @@
                                     <div class="form-group">
                                         <label for="Company-2" class="block"> صورة المنتج </label>
                                         <input required id="Company-2" name="main_image" type="file" class="form-control required" accept="image/*">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="Company-2" class="block"> صورة الموبايل </label>
+                                        <input required id="Company-2" name="main_image_phone" type="file" class="form-control required" accept="image/*">
                                     </div>
                                     <div class="form-group">
                                         <label for="Company-2" class="block"> تريب المنتج </label>

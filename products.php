@@ -66,7 +66,12 @@ include "init.php";
 							<!-- Block2 -->
 							<div class="block2">
 								<div class="block2-pic hov-img0">
-									<img src="admin/products/images/<?php echo $product['image']; ?>" alt="IMG-PRODUCT">
+									<picture>
+										<!-- توفير الصورة للديسكتوب -->
+										<source media="(min-width: 991px)" srcset="admin/products/images/<?php echo $product['image']; ?>">
+										<!-- توفير الصورة للموبايل -->
+										<img src="admin/products/phone_images/<?php echo $product['image_phone']; ?>" alt="IMG-PRODUCT">
+									</picture>
 								</div>
 								<div class="block2-txt flex-w flex-t p-t-14">
 									<div class="block2-txt-child1 flex-col-l ">
