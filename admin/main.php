@@ -6,6 +6,8 @@ include 'init.php';
 
 if (isset($_SESSION['admin_username'])) {
     include 'include/navbar.php';
+}else{
+    header("Location:index");
 }
 ?>
 <!-- Content Wrapper. Contains page content -->
